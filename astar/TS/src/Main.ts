@@ -9,6 +9,7 @@ import BFT from "./tree/BFT";
 import BFTTest from "./tree/BFTTest";
 import PriorityQueue from "./heap/PriorityQueue";
 import Bag01 from "./Bag01";
+import Sort from "./sort/Sort";
 class Main {
     constructor() {
 
@@ -33,7 +34,8 @@ class Main {
         // let d = this.p_dot(p3, p2, p);
         // console.log(a, b, c, d)
         // this.calcInterest();
-        new Bag01().test();
+        // new Bag01().test();
+        Sort.test();
     }
 
     private retire(): void {
