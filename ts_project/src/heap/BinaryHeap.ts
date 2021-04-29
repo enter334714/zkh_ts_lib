@@ -1,16 +1,19 @@
 /**
+ * (a,b)=>{return a - b}; 大顶堆
+ * (a,b)=>{return b - a};  小顶堆
+ */
+export interface BinaryHeapSort<T> {
+    (a: T, b: T): number;
+}
+
+/**
  * 二叉堆
  * 二叉堆是一个完全二叉树
  * 有最大的，最小堆
  * 最大堆性质:  父节点的值一定比子节点的值大
  * 最小堆性质:  父节点的值一定比子节点的值小
+ * @author zkh
  */
-
-//(a,b)=>{return a - b}; 大顶堆
-//(a,b)=>{return b - a};  小顶堆
-export interface BinaryHeapSort<T> {
-    (a: T, b: T): number;
-}
 export default class BinaryHeap<T> {
     private _list: T[];
     private _sortFun: BinaryHeapSort<T>
@@ -102,7 +105,7 @@ export default class BinaryHeap<T> {
     * @param index 
     */
     private rightChild(index: number): number {
-        return index * 2 + 2;   
+        return index * 2 + 2;
     }
 
     /**
@@ -149,7 +152,6 @@ export default class BinaryHeap<T> {
     public isEmpty(): boolean {
         return this._list.length == 0;
     }
-
 
     //测试
     public static test(): void {

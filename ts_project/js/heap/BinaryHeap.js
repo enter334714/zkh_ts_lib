@@ -1,12 +1,13 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 二叉堆
  * 二叉堆是一个完全二叉树
  * 有最大的，最小堆
  * 最大堆性质:  父节点的值一定比子节点的值大
  * 最小堆性质:  父节点的值一定比子节点的值小
+ * @author zkh
  */
-Object.defineProperty(exports, "__esModule", { value: true });
 class BinaryHeap {
     constructor(sortFun) {
         this._list = new Array();

@@ -1,12 +1,17 @@
-
+import BinaryHeap, { BinaryHeapSort } from "../heap/BinaryHeap";
+/**
+ * 一些排序算法
+ * @author zkh
+ */
 export default class Sort {
 
     /**
-     *插入排序
-     *在插入排序中,当待排序数组是有序时,是最优的情况,只需当前数跟前一个数比较一下就可以了,这时一共需要比较N- 1次,时间复杂度为O(N)
-     *最坏的情况是待排序数组是逆序的,此时需要比较次数最多,总次数记为：1+2+3+…+N-1,所以,插入排序最坏情况下的时间复杂度为O(N^2)
-     *插入排序适用于已经有部分数据已经排好，并且排好的部分越大越好。一般在输入规模大于1000的场合下不建议使用插入排序
-     *空间复杂度O(1); 
+     * 插入排序
+     * 在插入排序中,当待排序数组是有序时,是最优的情况,只需当前数跟前一个数比较一下就可以了,这时一共需要比较N- 1次,时间复杂度为O(N)
+     * 最坏的情况是待排序数组是逆序的,此时需要比较次数最多,总次数记为：1+2+3+…+N-1,所以,插入排序最坏情况下的时间复杂度为O(N^2)
+     * 平均时间复杂度O(N^2)
+     * 空间复杂度O(1) 
+     * 插入排序适用于已经有部分数据已经排好，并且排好的部分越大越好。一般在输入规模大于1000的场合下不建议使用插入排序  
      * @param arrs 
      * @param sortFun 
      */
@@ -33,6 +38,7 @@ export default class Sort {
      * 希尔排序(Shell's Sort)是插入排序的一种又称“缩小增量排序”（Diminishing Increment Sort），是直接插入排序算法的一种更高效的改进版本
      * 希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至 1 时，整个文件恰被分成一组，算法便终止
      * 时间复杂度O(n^（1.3—2）)
+     * 平均时间复杂度O(nlogn)
      * 空间复杂度O(1)
      * https://www.cnblogs.com/chengxiao/p/6104371.html
      * https://baike.baidu.com/item/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/3229428?fr=aladdin
@@ -101,6 +107,8 @@ export default class Sort {
      * 选择排序
      * 最好复杂度O(n^2)
      * 最差复杂度O(n^2)
+     * 平均时间复杂度O(N^2)
+     * 空间复杂度O(1)   
      * 不稳定的排序方法
      * 第一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，
      * 然后再从剩余的未排序元素中寻找到最小（大）元素，然后放到已排序的序列的末尾。
@@ -136,6 +144,16 @@ export default class Sort {
         }
     }
 
+    /**
+     * 堆排序
+     * 
+     * */
+    public static HeapSort<T>(arrs: T[], sortFun: BinaryHeapSort<T>): BinaryHeap<T> {
+        let binaryHeap = new BinaryHeap<T>(sortFun);
+        binaryHeap.heapify(arrs);
+        return binaryHeap;
+    }
+
     /*测试函数*/
     public static test(): void {
         let testArr = [8, 15, 18, 20, 21, 40, 20, 45, 17];
@@ -165,9 +183,26 @@ export default class Sort {
             return a < b;
         });
         console.log("SelectSort选择排序 降序 ", testArr);
-        this.SelectSort<Number>(testArr)
+        this.SelectSort<number>(testArr)
         console.log("SelectSort选择排序 升序 ", testArr);
-        debugger;
 
+        let heapSort = this.HeapSort<number>(testArr, (a: number, b: number): number => {
+            return b - a;
+        });
+        let tempArr = [];
+        while (!heapSort.isEmpty()) {
+            tempArr.push(heapSort.pop())
+        }
+        console.log("heapSort 堆排序小顶堆 升序 ", tempArr);
+
+        let heapSort1 = this.HeapSort<number>(tempArr, (a: number, b: number): number => {
+            return a - b;
+        });
+        testArr = [];
+        while (!heapSort1.isEmpty()) {
+            testArr.push(heapSort1.pop())
+        }
+        console.log("heapSort 堆排序大顶堆 降序 ", testArr);
+        debugger;
     }
 }
