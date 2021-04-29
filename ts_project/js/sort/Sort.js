@@ -103,10 +103,33 @@ class Sort {
      * 第一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，
      * 然后再从剩余的未排序元素中寻找到最小（大）元素，然后放到已排序的序列的末尾。
      * 以此类推，直到全部待排序的数据元素的个数为零。
+     * https://baike.baidu.com/item/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/9762418?fr=aladdin
      * @param arrs
      * @param sortFun
      */
     static SelectSort(arrs, sortFun) {
+        let len = arrs.length - 1, i = 0, j, temp;
+        while (i < len) {
+            let minIndex = i;
+            for (j = i + 1; j <= len; j++) {
+                let compare = false;
+                if (sortFun) {
+                    compare = sortFun(arrs[j], arrs[minIndex]);
+                }
+                else {
+                    compare = arrs[j] < arrs[minIndex];
+                }
+                if (compare) {
+                    minIndex = j;
+                }
+            }
+            if (minIndex != i) {
+                let temp = arrs[i];
+                arrs[i] = arrs[minIndex];
+                arrs[minIndex] = temp;
+            }
+            i++;
+        }
     }
     /*测试函数*/
     static test() {
@@ -120,7 +143,7 @@ class Sort {
         this.ShellSort(testArr, (a, b) => {
             return a < b;
         });
-        console.log("InsertSort希尔排序 降序 ", testArr);
+        console.log("ShellSort希尔排序 降序 ", testArr);
         this.ShellSort(testArr);
         console.log("ShellSort希尔排 升序 ", testArr);
         let testArr1 = [{ value: 1 }, { value: 2 }, { value: 100 }, { value: 0 }];
@@ -130,6 +153,12 @@ class Sort {
         console.log("BubbleSort冒泡排序 降序 ", testArr);
         this.BubbleSort(testArr);
         console.log("BubbleSort冒泡排序 升序 ", testArr);
+        this.BubbleSort(testArr, (a, b) => {
+            return a < b;
+        });
+        console.log("SelectSort选择排序 降序 ", testArr);
+        this.SelectSort(testArr);
+        console.log("SelectSort选择排序 升序 ", testArr);
         debugger;
     }
 }

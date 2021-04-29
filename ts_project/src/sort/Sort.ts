@@ -10,7 +10,7 @@ export default class Sort {
      * @param arrs 
      * @param sortFun 
      */
-    public static InsertSort(arrs: number[] | any[], sortFun?: (a: any, b: any) => boolean): void {
+    public static InsertSort<T>(arrs: T[], sortFun?: (a: T, b: T) => boolean): void {
         let len = arrs.length;
         for (let i: number = 1; i < len; i++) {
             for (let j = i; j > 0; j--) {
@@ -38,7 +38,7 @@ export default class Sort {
      * https://baike.baidu.com/item/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/3229428?fr=aladdin
      * @param arrs 
      */
-    public static ShellSort(arrs: number[] | any[], sortFun?: (a: any, b: any) => boolean): void {
+    public static ShellSort<T>(arrs: T[], sortFun?: (a: T, b: T) => boolean): void {
         let len: number = arrs.length;
         for (let fraction = arrs.length / 2 >> 0; fraction > 0; fraction = fraction / 2 >> 0) {
             for (let i: number = fraction; i < len; i++) {
@@ -70,7 +70,7 @@ export default class Sort {
      * @param arrs 
      * @param sortFun 
      */
-    public static BubbleSort(arrs: number[] | any[], sortFun?: (a: any, b: any) => boolean): void {
+    public static BubbleSort<T>(arrs: T[], sortFun?: (a: T, b: T) => boolean): void {
         let i: number = arrs.length - 1,
             j: number,
             temp: number,
@@ -105,11 +105,35 @@ export default class Sort {
      * 第一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，
      * 然后再从剩余的未排序元素中寻找到最小（大）元素，然后放到已排序的序列的末尾。
      * 以此类推，直到全部待排序的数据元素的个数为零。
+     * https://baike.baidu.com/item/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/9762418?fr=aladdin
      * @param arrs 
      * @param sortFun 
      */
-    public static SelectSort<T>(arrs: number[] | T[], sortFun?: (a: T, b: T) => boolean): void {
-        
+    public static SelectSort<T>(arrs: T[], sortFun?: (a: T, b: T) => boolean): void {
+        let len: number = arrs.length - 1,
+            i: number = 0,
+            j: number,
+            temp: T;
+        while (i < len) {
+            let minIndex: number = i;
+            for (j = i + 1; j <= len; j++) {
+                let compare: boolean = false;
+                if (sortFun) {
+                    compare = sortFun(arrs[j], arrs[minIndex])
+                } else {
+                    compare = arrs[j] < arrs[minIndex];
+                }
+                if (compare) {
+                    minIndex = j;
+                }
+            }
+            if (minIndex != i) {
+                let temp = arrs[i];
+                arrs[i] = arrs[minIndex];
+                arrs[minIndex] = temp;
+            }
+            i++;
+        }
     }
 
     /*测试函数*/
@@ -125,7 +149,7 @@ export default class Sort {
         this.ShellSort(testArr, (a: number, b: number): boolean => {
             return a < b;
         });
-        console.log("InsertSort希尔排序 降序 ", testArr);
+        console.log("ShellSort希尔排序 降序 ", testArr);
         this.ShellSort(testArr)
         console.log("ShellSort希尔排 升序 ", testArr);
 
@@ -137,6 +161,12 @@ export default class Sort {
         this.BubbleSort(testArr)
         console.log("BubbleSort冒泡排序 升序 ", testArr);
 
+        this.BubbleSort(testArr, (a: any, b: any): boolean => {
+            return a < b;
+        });
+        console.log("SelectSort选择排序 降序 ", testArr);
+        this.SelectSort<Number>(testArr)
+        console.log("SelectSort选择排序 升序 ", testArr);
         debugger;
 
     }
