@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+
+<body>
+    <canvas width="300" height="300" id="my_Canvas"></canvas>
+    <script src="lib/webgl-utils.js"></script>
+    <script id="2d-vertex-shader" type="x-shader/x-vertex">
+        attribute vec2 a_position;    
+        uniform  vec2 u_resolution;    
+        attribute vec2 a_texCoord;
+        varying vec2 v_texCoord;
+    
+        uniform vec2 u_translation;
+        uniform float u_rotation;
+        uniform float u_CosB;
+        uniform float u_SinB;
+        void main() {
+            
+           
+            vec2 rotatedPosition = vec2(
+                a_position.x * cos(u_rotation) - a_position.y * sin(u_rotation),
+                a_position.x * sin(u_rotation) + a_position.y * cos(u_rotation)
+            );
+            
+          
+            gl_Position = vec4(rotatedPosition.xy, 0, 1);
+            v_texCoord = a_texCoord;
+            //gl_Position = v_texCoord;
+        }
+        </script>
+
+    <script id="2d-fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+
+        // our texture
+        uniform sampler2D u_image;
+        
+        // the texCoords passed in from the vertex shader.
+        varying vec2 v_texCoord;
+        void main() {
+          //gl_FragColor = vec4(1,0, 0, 1);  // green
+          //gl_FragColor = texture2D(u_image, v_texCoord);
+          gl_FragColor = texture2D(u_image, v_texCoord).rgba;
+        }
+    </script>
+    <script>
+        function main() {
+            var image = new Image();
+            image.src = "test1.png";  // MUST BE SAME DOMAIN!!!            
+            image.onload = function () {
+                render(image);
+            }
+        }
+       
+        function render(image) {
+            // Get A WebGL context
+            var canvas = document.getElementById("my_Canvas");
+            var gl = canvas.getContext("experimental-webgl");
+
+            // setup a GLSL program
+            var program = createProgramFromScripts(gl, ["2d-vertex-shader", "2d-fragment-shader"]);
+            gl.useProgram(program);
+
+            // // look up where the vertex data needs to go.
+            var positionLocation = gl.getAttribLocation(program, "a_position");
+
+            // set the resolution
+            var resolutionLocation = gl.getUniformLocation(program, "u_resolution");
+            gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+
+            // Create a buffer and put a single clipspace rectangle in
+            // it (2 triangles)
+            var buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(
+                gl.ARRAY_BUFFER,
+                new Float32Array([
+                    -0.5,-0.5,
+                    0.5, -0.5,
+                    -0.5, 0.5,
+                    -0.5, 0.5,
+                    0.5, -0.5,
+                    0.5, 0.5
+                ]),
+                gl.STATIC_DRAW);
+            gl.enableVertexAttribArray(positionLocation);
+            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+            var texCoordLocation = gl.getAttribLocation(program, "a_texCoord");
+
+            // provide texture coordinates for the rectangle.
+            var texCoordBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+                0.0, 0.0,
+                1.0, 0.0,
+                0.0, 1.0,
+                // 0.0, 1.0,
+                // 1.0, 0.0,
+                // 1.0, 1.0
+            ]), gl.STATIC_DRAW);
+            gl.enableVertexAttribArray(texCoordLocation);
+            gl.vertexAttribPointer(texCoordLocation, 2, gl.FLOAT, false, 0, 0);
+
+            // Create a texture.
+            
+            var texture = gl.createTexture();
+            gl.bindTexture(gl.TEXTURE_2D, texture);
+            gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
+            // Set the parameters so we can render any size image.
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+            // Clear the canvas
+            gl.clearColor(0.5, 0.5, 0.5, 0.9);
+            // var rotation = 0 * Math.PI / 180;
+            var ANGLE = 0;
+                setInterval(() => {
+                    var radian = Math.PI * ANGLE / 180.0;
+                    var cosB = Math.cos(radian);
+                    var sinB = Math.sin(radian);
+
+                    // var u_CosB = gl.getUniformLocation(program, 'u_CosB');
+                    // var u_SinB = gl.getUniformLocation(program, 'u_SinB');
+                    // gl.uniform1f(u_CosB, cosB);
+                    // gl.uniform1f(u_SinB, sinB);
+
+                
+                    var rotationLocation = gl.getUniformLocation(program, "u_rotation");
+                    gl.uniform1f(rotationLocation, radian);
+                    gl.enable(gl.DEPTH_TEST);
+                    gl.clear(gl.COLOR_BUFFER_BIT);
+                    gl.viewport(0, 0, canvas.width, canvas.height);
+                    gl.drawArrays(gl.TRIANGLES, 0, 6);
+                    ANGLE++;
+                    if(ANGLE > 360) ANGLE= 0
+                }, 8000); 
+          
+             
+             
+
+            // Enable the depth test
+            gl.enable(gl.DEPTH_TEST);
+
+            // Clear the color buffer bit
+            gl.clear(gl.COLOR_BUFFER_BIT);
+
+            // Set the view port
+            gl.viewport(0, 0, canvas.width, canvas.height);
+            // draw
+            gl.drawArrays(gl.TRIANGLES, 0, 6);
+5
+        }
+
+        main();
+
+
+    </script>
+
+</html>

@@ -1,0 +1,46 @@
+<html>
+</html>
+<script type="text/javascript">
+
+var arr  = [9,9,9,9,9,9,9,11,11,11];
+function up(n){
+	console.log(1)
+	var len = arr.length;
+	console.log(2)
+	var nN = arr[n];
+	while(true){
+		var index2N = (n+1) << 1;
+		var index1N = index2N -1;
+		var swap = null;
+		console.log(swap);
+		if(index1N < len){
+			var c1 = arr[index1N];
+			if(c1 < nN){
+				swap = index1N;
+			}
+		}if(index2N < len){
+			var c2 = arr[index2N];
+			if(c2 < nN){
+				swap = index2N;
+			}
+		}
+		console.log("swap:",swap)
+		if(swap){
+			arr[n] = arr[swap];
+			arr[swap] = nN;
+			n=swap;
+			console.log(arr,"N:",n)
+		}else{
+			break;
+		}
+
+
+	}
+}
+
+var a = arr.pop();
+arr[0] = a;
+console.log(arr)
+up(0);
+console.log(arr)
+</script>
