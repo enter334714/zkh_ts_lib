@@ -103,6 +103,7 @@ export default class Sort {
             i--;
         }
     }
+
     /**
      * 选择排序
      * 最好复杂度O(n^2)
@@ -152,6 +153,13 @@ export default class Sort {
         let binaryHeap = new BinaryHeap<T>(sortFun);
         binaryHeap.heapify(arrs);
         return binaryHeap;
+    }
+
+    /**
+     * 快速排序
+     */
+    public static QuickSort<T>(): void {
+
     }
 
     /*测试函数*/

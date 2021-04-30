@@ -1,6 +1,5 @@
 /**
 *@author: zkh
-*@date: 2018-04-10 17:54:06
 *@QQ：839982440
 */
 export default class Queue<T>{
