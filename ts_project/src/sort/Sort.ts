@@ -147,7 +147,10 @@ export default class Sort {
 
     /**
      * 堆排序
-     * 
+     * 最好时间复杂度是O(nlog2n)
+     * 最差时间复杂度是O(nlog2n)
+     * 平均时间复杂度是O(nlog2n)
+     * 空间复杂度为O(1)
      * */
     public static HeapSort<T>(arrs: T[], sortFun: BinaryHeapSort<T>): BinaryHeap<T> {
         let binaryHeap = new BinaryHeap<T>(sortFun);
@@ -157,18 +160,51 @@ export default class Sort {
 
     /**
      * 快速排序
+     * 最好时间复杂度是O(nlog2n)
+     * 最差时间复杂度是O(n^2)
+     * 平均时间复杂度是O(nlog2n)
+     * 空间复杂度为O(log2n)
+     * https://baike.baidu.com/item/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/369842?fromtitle=%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F&fromid=2084344&fr=aladdin
+     * sortFun 未实现后面搞
      */
-    public static QuickSort<T>(): void {
-
+    public static QuickSort<T>(arrs: T[], sortFun?: (a: T, centerValue: T) => boolean): void {
+        const sort = (arrs: T[], left: number = 0, right: number = arrs.length - 1) => {
+            if (left >= right) //如果左边的索引大于等于右边的索引说明整理完毕
+                return;
+            let i: number = left,
+                j: number = right;
+            const splitValue: T = arrs[j]; // 取无序数组最后一个数为基准值
+            while (i < j) {
+                while (i < j && arrs[i] <= splitValue) {
+                    i++;
+                }
+                arrs[j] = arrs[i];
+                while (j > i && arrs[j] >= splitValue) {
+                    j--;
+                }
+                arrs[i] = arrs[j];
+            }
+            arrs[j] = splitValue;
+            sort(arrs, left, j - 1);
+            sort(arrs, j + 1, right);
+        }
+        sort(arrs);
     }
 
     /*测试函数*/
     public static test(): void {
         let testArr = [8, 15, 18, 20, 21, 40, 20, 45, 17];
+        let testObjArr1 = [{ v: 8 }, { v: 15 }, { v: 18 }, { v: 20 }, { v: 21 }, { v: 40 }, { v: 20 }, { v: 45 }, { v: 17 }];
         this.InsertSort(testArr, (a: number, b: number): boolean => {
             return a > b;
         });
         console.log("InsertSort插入排序 降序 ", testArr);
+
+        this.InsertSort(testObjArr1, (a: any, b: any): boolean => {
+            return a.v < b.v;
+        });
+        console.log("InsertSort插入排序Object 升序 ", testObjArr1);
+
         this.InsertSort(testArr);
         console.log("InsertSort插入排序 升序 ", testArr);
 
@@ -176,10 +212,15 @@ export default class Sort {
             return a < b;
         });
         console.log("ShellSort希尔排序 降序 ", testArr);
-        this.ShellSort(testArr)
-        console.log("ShellSort希尔排 升序 ", testArr);
 
-        let testArr1 = [{ value: 1 }, { value: 2 }, { value: 100 }, { value: 0 }]
+        this.ShellSort(testObjArr1, (a: any, b: any): boolean => {
+            return a.v < b.v;
+        });
+        console.log("ShellSort希尔排序Object 升序 ", testObjArr1);
+        this.ShellSort(testArr)
+        console.log("ShellSort希尔排序 升序 ", testArr);
+
+
         this.BubbleSort(testArr, (a: any, b: any): boolean => {
             return a < b;
         });
@@ -194,7 +235,7 @@ export default class Sort {
         this.SelectSort<number>(testArr)
         console.log("SelectSort选择排序 升序 ", testArr);
 
-        let heapSort = this.HeapSort<number>(testArr, (a: number, b: number): number => {
+        let heapSort = this.HeapSort<number>(testArr.concat(), (a: number, b: number): number => {
             return b - a;
         });
         let tempArr = [];
@@ -203,14 +244,18 @@ export default class Sort {
         }
         console.log("heapSort 堆排序小顶堆 升序 ", tempArr);
 
-        let heapSort1 = this.HeapSort<number>(tempArr, (a: number, b: number): number => {
+        let heapSort1 = this.HeapSort<number>(testArr.concat(), (a: number, b: number): number => {
             return a - b;
         });
-        testArr = [];
+        tempArr = [];
         while (!heapSort1.isEmpty()) {
-            testArr.push(heapSort1.pop())
+            tempArr.push(heapSort1.pop())
         }
-        console.log("heapSort 堆排序大顶堆 降序 ", testArr);
+        console.log("heapSort 堆排序大顶堆 降序", tempArr);
+
+        let quickSortArr = [3, 2, 8, 10, 15, 60, 7, 9]
+        this.QuickSort<number>(quickSortArr);
+        console.log("QuickSort 快速排序 升序 ", quickSortArr);
         debugger;
     }
 }
