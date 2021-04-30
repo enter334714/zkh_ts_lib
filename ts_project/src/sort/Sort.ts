@@ -165,9 +165,10 @@ export default class Sort {
      * 平均时间复杂度是O(nlog2n)
      * 空间复杂度为O(log2n)
      * https://baike.baidu.com/item/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/369842?fromtitle=%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F&fromid=2084344&fr=aladdin
+     * 递归实现，在浏览器数据太多会堆栈溢出
      * sortFun 未实现后面搞
      */
-    public static QuickSort<T>(arrs: T[], sortFun?: (a: T, centerValue: T) => boolean): void {
+    public static QuickSort<T>(arrs: T[], sortFun?: (a: T, centerValue: T) => boolean): T[] {
         const sort = (arrs: T[], left: number = 0, right: number = arrs.length - 1) => {
             if (left >= right) //如果左边的索引大于等于右边的索引说明整理完毕
                 return;
@@ -189,6 +190,48 @@ export default class Sort {
             sort(arrs, j + 1, right);
         }
         sort(arrs);
+        return arrs;
+    }
+    /**
+     * 普通归并排序（迭代法;递归法 数据量大浏览器会递归溢出）
+     * 时间复杂度O(n log n)
+     * 空间复杂度T（n)
+     * @param arrs 
+     */
+    public static mergeSort(arrs: number[]): number[] {
+        let len: number = arrs.length;
+        let temp: number[] = new Array(len);
+        let step: number = 1, t: number;
+
+        const merge = (arr: number[], temp: number[], left: number, middle: number, right: number) => {
+            const leftEnd: number = middle - 1; // 通过右边数组的起始位置得到左边数组的结束位置。
+            while (left <= leftEnd && middle < right) { // 如果‘指针’没有越界。
+                if (arr[left] > arr[middle]) { // 如果左边数组第一个元素比右边数组第一个元素大。
+                    temp[left + middle - leftEnd - 1] = arr[middle++]; // 将右边数组最小的放入有序数组 temp（初始值为空)。
+                } else {
+                    temp[left + middle - leftEnd - 1] = arr[left++]; // 将左边数组最小的放入有序数组 temp（初始值为空)。
+                }
+            }
+            while (left > leftEnd && middle < right) { // 如果左边数组放完了，右边数组还有元素。
+                temp[left + middle - leftEnd - 1] = arr[middle++]; // 那么依次将右边数组剩余的元素放入 temp 。
+            }
+            while (left <= leftEnd && middle >= right) { // 如果右边数组放完了，左边数组还有元素
+                temp[left + middle - leftEnd - 1] = arr[left++]; // 那么依次将左边数组剩余的元素放入 temp 。
+            }
+        }
+
+        for (t = 0; Math.pow(2, t) < len; t++, step *= 2) {
+            const even: boolean = t % 2 === 0;
+            for (let left: number = 0; left < len; left += 2 * step) { //左边数组起始位置 0
+                const middle: number = left + step < len ? left + step : left; //右边数组的起始位置;
+                const right: number = left + (2 * step) < len ? left + (2 * step) : len; // 右边界 right 就是 left + 两个数组长度。
+                merge(even ? arrs : temp, even ? temp : arrs, left, middle, right); // 合并每两个相邻的数组。
+            }
+        }
+        if (t % 2 === 0) {
+            return arrs;//返回arr
+        }
+        return temp; // 返回 temp 。
     }
 
     /*测试函数*/
@@ -253,9 +296,22 @@ export default class Sort {
         }
         console.log("heapSort 堆排序大顶堆 降序", tempArr);
 
+        let heapSort2 = this.HeapSort<any>(testObjArr1.concat(), (a: any, b: any): number => {
+            return b.v - a.v;
+        });
+        tempArr = [];
+        while (!heapSort2.isEmpty()) {
+            tempArr.push(heapSort2.pop())
+        }
+        console.log("heapSort 堆排序OBJECT大顶堆 降序", tempArr);
+
         let quickSortArr = [3, 2, 8, 10, 15, 60, 7, 9]
         this.QuickSort<number>(quickSortArr);
         console.log("QuickSort 快速排序 升序 ", quickSortArr);
+
+
+        this.mergeSort(quickSortArr);
+        console.log("mergeSort 归并排序 升序 ", testArr);
         debugger;
     }
 }
