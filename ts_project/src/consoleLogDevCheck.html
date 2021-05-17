@@ -1,0 +1,17 @@
+<html>
+<title>控制台开启检测</title>
+
+</html>
+<script>
+    let check = function () { };
+    let index = 0;
+    check.toString = function () {
+        console.clear();
+        index++;
+        console.log("index:", index);
+        debugger;
+    }
+    // setInterval(() => {
+        console.log("%s", check);
+    // }, 1000);
+</script>
