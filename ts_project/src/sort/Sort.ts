@@ -12,6 +12,7 @@ export default class Sort {
      * 平均时间复杂度O(N^2)
      * 空间复杂度O(1) 
      * 插入排序适用于已经有部分数据已经排好，并且排好的部分越大越好。一般在输入规模大于1000的场合下不建议使用插入排序  
+     * 稳定
      * @param arrs 
      * @param sortFun 
      */
