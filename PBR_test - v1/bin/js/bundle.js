@@ -527,7 +527,7 @@ var laya = (function (exports) {
             this.camera.clearColor = new Laya.Vector4(0.5, 0.5, 0.5, 1.0);
             this.camera.orthographicVerticalSize = 4;
             this.oldTime = Laya.timer.currTimer;
-            this.hittedTime = Laya.timer.currTimer;
+            this.hittedTime = 0.0;
             Laya.stage.on(Laya.Event.KEY_UP, this, this.onKeyUp);
         }
         onKeyUp(e) {
@@ -588,12 +588,12 @@ var laya = (function (exports) {
             _material_guanyu_nv.hittedCoverColor = new Laya.Vector4(1.0, 1.0, 1.0, 1.0);
             _material_guanyu_nv.hittedMulColor = new Laya.Vector4(1.0, 0.8, 0.0, 1.0);
             _material_guanyu_nv.hittedCoverOrMul = 0.8;
-            _material_guanyu_nv.hittedCoverTime = 2.15;
+            _material_guanyu_nv.hittedCoverTime = 0.15;
             _material_guanyu_nv.hittedMulTime = 0.25;
             _material_guanyu_nv.hittedZ = -12.0;
             _material_guanyu_nv.hittedZ_k = 13.0;
             _material_guanyu_nv.hittedUseNormal = 0.0;
-            _material_guanyu_nv.hittedRim_k = 1.0;
+            _material_guanyu_nv.hittedRim_k = 3.0;
             _material_guanyu_nv.hittedRim_pow = 1.0;
             _material_guanyu_nv.hittedRim_add = 0.01;
             _material_guanyu_nv.hittedIsColor1Grad = 0.0;
