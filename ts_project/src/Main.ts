@@ -10,6 +10,7 @@ import BFTTest from "./tree/BFTTest";
 import PriorityQueue from "./heap/PriorityQueue";
 import Bag01 from "./Bag01";
 import Sort from "./sort/Sort";
+import KaoShi from "./kaoShi";
 class Main {
     constructor() {
 
@@ -35,7 +36,8 @@ class Main {
         // console.log(a, b, c, d)
         // this.calcInterest();
         // new Bag01().test();
-        Sort.test();
+        // Sort.test();
+        new KaoShi();
     }
 
     private retire(): void {
@@ -105,7 +107,7 @@ class Main {
         let up: number[] = [];
         let down: number[] = [];
 
-        var i:number = 0;
+        var i: number = 0;
         for (let i: number = 0; i < 10; i++) {
             up[i] = 1;
         }
