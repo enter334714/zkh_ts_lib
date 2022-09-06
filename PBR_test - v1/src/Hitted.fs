@@ -5,11 +5,11 @@ precision mediump float;
 #endif
 
 uniform sampler2D u_MainTex;
-// uniform sampler2D u_HLTex;
-// uniform float u_time;
+uniform sampler2D u_HLTex;
+uniform float u_time;
 
 uniform vec3 u_CameraPos;
-// uniform float u_MyTime;
+uniform float u_MyTime;
 
 varying vec2 v_Texcoord;
 varying vec4 worldPos;

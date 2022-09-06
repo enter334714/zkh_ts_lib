@@ -4,11 +4,11 @@ import GameConfig from "./GameConfig";
 
 class IndiceData {
 
-	a: number = 0;
-	b: number = 0;
-	c: number = 0;
+	a: number = 0;		
+	b: number = 0;		
+	c: number = 0;	
 	score: number = 0;
-}
+	}
 export class CustomMaterial extends Laya.Material {
 	public static MAINTEX = Laya.Shader3D.propertyNameToID("u_MainTex");  //主纹理-逐材质(texture2D)
 	public static NORMTEX = Laya.Shader3D.propertyNameToID("u_NormalMap"); //法线贴图-逐材质(texture2D)
@@ -67,402 +67,514 @@ export class CustomMaterial extends Laya.Material {
 	public static HITTED_ISCOLOR2GRAD = Laya.Shader3D.propertyNameToID("_hittedIsColor2Grad");//第二段颜色是否使用渐变
 	public static HITTEDDELTATIME = Laya.Shader3D.propertyNameToID("_hittedDeltaTime");
 
-	constructor() {
-		super();
-		//设置本材质使用的shader名字
-		this.setShaderName("CustomShader");
-	}
+    constructor() {
+        super();
+        //设置本材质使用的shader名字
+        this.setShaderName("CustomShader");
+    }
 
-	get hittedDeltaTime() {
+	get hittedDeltaTime()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTEDDELTATIME);
 	}
-	set hittedDeltaTime(value) {
+	set hittedDeltaTime(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTEDDELTATIME, value);
 	}
 
-	get hittedCoverColor() {
+	get hittedCoverColor()
+	{
 		return this._shaderValues.getVector(CustomMaterial.HITTEDCOVERCOLOR);
 	}
-	set hittedCoverColor(value) {
+	set hittedCoverColor(value)
+	{
 		this._shaderValues.setVector(CustomMaterial.HITTEDCOVERCOLOR, value);
 	}
 
-	get hittedMulColor() {
+	get hittedMulColor()
+	{
 		return this._shaderValues.getVector(CustomMaterial.HITTEDMULCOLOR);
 	}
-	set hittedMulColor(value) {
+	set hittedMulColor(value)
+	{
 		this._shaderValues.setVector(CustomMaterial.HITTEDMULCOLOR, value);
 	}
 
-	get hittedCoverOrMul() {
+	get hittedCoverOrMul()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTEDCOVERORMUL);
 	}
-	set hittedCoverOrMul(value) {
+	set hittedCoverOrMul(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTEDCOVERORMUL, value);
 	}
 
-	get hittedCoverTime() {
+	get hittedCoverTime()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTEDCOVERTIME);
 	}
-	set hittedCoverTime(value) {
+	set hittedCoverTime(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTEDCOVERTIME, value);
 	}
 
-	get hittedMulTime() {
+	get hittedMulTime()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTEDMULTIME);
 	}
-	set hittedMulTime(value) {
+	set hittedMulTime(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTEDMULTIME, value);
 	}
 
-	get hittedZ() {
+	get hittedZ()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTED_Z);
 	}
-	set hittedZ(value) {
+	set hittedZ(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTED_Z, value);
 	}
 
-	get hittedZ_k() {
+	get hittedZ_k()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTED_Z_K);
 	}
-	set hittedZ_k(value) {
+	set hittedZ_k(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTED_Z_K, value);
 	}
 
-	get hittedUseNormal() {
+	get hittedUseNormal()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTED_USENORMAL);
 	}
-	set hittedUseNormal(value) {
+	set hittedUseNormal(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTED_USENORMAL, value);
 	}
 
-	get hittedRim_k() {
+	get hittedRim_k()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTED_RIM_K);
 	}
-	set hittedRim_k(value) {
+	set hittedRim_k(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTED_RIM_K, value);
 	}
 
-	get hittedRim_pow() {
+	get hittedRim_pow()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTED_RIM_POW);
 	}
-	set hittedRim_pow(value) {
+	set hittedRim_pow(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTED_RIM_POW, value);
 	}
 
-	get hittedRim_add() {
+	get hittedRim_add()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTED_RIM_ADD);
 	}
-	set hittedRim_add(value) {
+	set hittedRim_add(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTED_RIM_ADD, value);
 	}
 
-	get hittedIsColor1Grad() {
+	get hittedIsColor1Grad()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTED_ISCOLOR1GRAD);
 	}
-	set hittedIsColor1Grad(value) {
+	set hittedIsColor1Grad(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTED_ISCOLOR1GRAD, value);
 	}
 
-	get hittedIsColor2Grad() {
+	get hittedIsColor2Grad()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HITTED_ISCOLOR2GRAD);
 	}
-	set hittedIsColor2Grad(value) {
+	set hittedIsColor2Grad(value)
+	{
 		this._shaderValues.setNumber(CustomMaterial.HITTED_ISCOLOR2GRAD, value);
 	}
 
-	get mainTex() {
+	get mainTex()
+	{
 		return this._shaderValues.getTexture(CustomMaterial.MAINTEX);
 	}
-	set mainTex(value) {
+	set mainTex(value)
+	{
 		this._shaderValues.setTexture(CustomMaterial.MAINTEX, value);
 	}
-
-	get normTex() {
+	
+	get normTex()
+	{
 		return this._shaderValues.getTexture(CustomMaterial.NORMTEX);
 	}
-	set normTex(value) {
-		this._shaderValues.setTexture(CustomMaterial.NORMTEX, value);
+	set normTex(value)
+	{
+		this._shaderValues.setTexture(CustomMaterial.NORMTEX,value);
 	}
 
-	get scatteringMask() {
+	get scatteringMask()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.SCATTERINGMASK);
 	}
-	set scatteringMask(value) {
-		this._shaderValues.setNumber(CustomMaterial.SCATTERINGMASK, value);
+	set scatteringMask(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.SCATTERINGMASK,value);
 	}
-
-	get hiLightTex() {
+	
+	get hiLightTex()
+	{
 		return this._shaderValues.getTexture(CustomMaterial.HILIGHTTEX);
 	}
-	set hiLightTex(value) {
-		this._shaderValues.setTexture(CustomMaterial.HILIGHTTEX, value);
+	set hiLightTex(value)
+	{
+		this._shaderValues.setTexture(CustomMaterial.HILIGHTTEX,value);
 	}
-
-	get envTex() {
+	
+	get envTex()
+	{
 		return this._shaderValues.getTexture(CustomMaterial.ENVTEX);
 	}
-	set envTex(value) {
-		this._shaderValues.setTexture(CustomMaterial.ENVTEX, value);
+	set envTex(value)
+	{
+		this._shaderValues.setTexture(CustomMaterial.ENVTEX,value);
 	}
-
-	get skinScatteringColor() {
+	
+	get skinScatteringColor()
+	{
 		return this._shaderValues.getVector(CustomMaterial.SKINSCATTERINGCOLOR);
 	}
-	set skinScatteringColor(value) {
-		this._shaderValues.setVector(CustomMaterial.SKINSCATTERINGCOLOR, value);
+	set skinScatteringColor(value)
+	{
+		this._shaderValues.setVector(CustomMaterial.SKINSCATTERINGCOLOR,value);
 	}
-
-	get hairScatteringColor() {
+	
+	get hairScatteringColor()
+	{
 		return this._shaderValues.getVector(CustomMaterial.HAIRSCATTERINGCOLOR);
 	}
-	set hairScatteringColor(value) {
-		this._shaderValues.setVector(CustomMaterial.HAIRSCATTERINGCOLOR, value);
+	set hairScatteringColor(value)
+	{
+		this._shaderValues.setVector(CustomMaterial.HAIRSCATTERINGCOLOR,value);
 	}
-
-	get jadeScatteringColor() {
+	
+	get jadeScatteringColor()
+	{
 		return this._shaderValues.getVector(CustomMaterial.JADESCATTERINGCOLOR);
 	}
-	set jadeScatteringColor(value) {
-		this._shaderValues.setVector(CustomMaterial.JADESCATTERINGCOLOR, value);
+	set jadeScatteringColor(value)
+	{
+		this._shaderValues.setVector(CustomMaterial.JADESCATTERINGCOLOR,value);
 	}
-
-	get silkStockingsColor() {
+	
+	get silkStockingsColor()
+	{
 		return this._shaderValues.getVector(CustomMaterial.SILKSTOCKINGSCOLOR);
 	}
-	set silkStockingsColor(value) {
-		this._shaderValues.setVector(CustomMaterial.SILKSTOCKINGSCOLOR, value);
+	set silkStockingsColor(value)
+	{
+		this._shaderValues.setVector(CustomMaterial.SILKSTOCKINGSCOLOR,value);
 	}
-
-	get silkStockThickness() {
+	
+	get silkStockThickness()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.SILKSTOCKTHICKNESS);
 	}
-	set silkStockThickness(value) {
-		this._shaderValues.setNumber(CustomMaterial.SILKSTOCKTHICKNESS, value);
+	set silkStockThickness(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.SILKSTOCKTHICKNESS,value);
 	}
-
-	get backLightColor() {
+	
+	get backLightColor()
+	{
 		return this._shaderValues.getVector(CustomMaterial.BACKLIGHTCOLOR);
 	}
-	set backLightColor(value) {
-		this._shaderValues.setVector(CustomMaterial.BACKLIGHTCOLOR, value);
+	set backLightColor(value)
+	{
+		this._shaderValues.setVector(CustomMaterial.BACKLIGHTCOLOR,value);
 	}
-
-	get backLightIntensity() {
+	
+	get backLightIntensity()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.BACKLIGHTINTENSITY);
 	}
-	set backLightIntensity(value) {
-		this._shaderValues.setNumber(CustomMaterial.BACKLIGHTINTENSITY, value);
+	set backLightIntensity(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.BACKLIGHTINTENSITY,value);
 	}
-
-	get ambientColorSky() {
+	
+	get ambientColorSky()
+	{
 		return this._shaderValues.getVector(CustomMaterial.AMBIENTCOLORSKY);
 	}
-	set ambientColorSky(value) {
-		this._shaderValues.setVector(CustomMaterial.AMBIENTCOLORSKY, value);
+	set ambientColorSky(value)
+	{
+		this._shaderValues.setVector(CustomMaterial.AMBIENTCOLORSKY,value);
 	}
-
-	get ambientColorGround() {
+	
+	get ambientColorGround()
+	{
 		return this._shaderValues.getVector(CustomMaterial.AMBIENTCOLORGROUND);
 	}
-	set ambientColorGround(value) {
-		this._shaderValues.setVector(CustomMaterial.AMBIENTCOLORGROUND, value);
+	set ambientColorGround(value)
+	{
+		this._shaderValues.setVector(CustomMaterial.AMBIENTCOLORGROUND,value);
 	}
-
-	get ambientColorIntensity() {
+	
+	get ambientColorIntensity()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.AMBIENTCOLORINTENSITY);
 	}
-	set ambientColorIntensity(value) {
-		this._shaderValues.setNumber(CustomMaterial.AMBIENTCOLORINTENSITY, value);
+	set ambientColorIntensity(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.AMBIENTCOLORINTENSITY,value);
 	}
-
-	get breathingLightColor() {
+	
+	get breathingLightColor()
+	{
 		return this._shaderValues.getVector(CustomMaterial.BREATHINGLIGHTCOLOR);
 	}
-	set breathingLightColor(value) {
-		this._shaderValues.setVector(CustomMaterial.BREATHINGLIGHTCOLOR, value);
+	set breathingLightColor(value)
+	{
+		this._shaderValues.setVector(CustomMaterial.BREATHINGLIGHTCOLOR,value);
 	}
-
-	get breathingLightIntensity() {
+	
+	get breathingLightIntensity()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.BREATHINGLIGHTINTENSITY);
 	}
-	set breathingLightIntensity(value) {
-		this._shaderValues.setNumber(CustomMaterial.BREATHINGLIGHTINTENSITY, value);
+	set breathingLightIntensity(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.BREATHINGLIGHTINTENSITY,value);
 	}
-
-	get breathingLightFrequency() {
+	
+	get breathingLightFrequency()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.BREATHINGLIGHTFREQUENCY);
 	}
-	set breathingLightFrequency(value) {
-		this._shaderValues.setNumber(CustomMaterial.BREATHINGLIGHTFREQUENCY, value);
+	set breathingLightFrequency(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.BREATHINGLIGHTFREQUENCY,value);
 	}
-
-	get breathingLightInterruption() {
+	
+	get breathingLightInterruption()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.BREATHINGLIGHTINTERRUPTION);
 	}
-	set breathingLightInterruption(value) {
-		this._shaderValues.setNumber(CustomMaterial.BREATHINGLIGHTINTERRUPTION, value);
+	set breathingLightInterruption(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.BREATHINGLIGHTINTERRUPTION,value);
 	}
-
-	get lightColor() {
+	
+	get lightColor()
+	{
 		return this._shaderValues.getVector(CustomMaterial.LIGHTCOLOR);
 	}
-	set lightColor(value) {
-		this._shaderValues.setVector(CustomMaterial.LIGHTCOLOR, value);
+	set lightColor(value)
+	{
+		this._shaderValues.setVector(CustomMaterial.LIGHTCOLOR,value);
 	}
-
-	get lightIntensity() {
+	
+	get lightIntensity()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.LIGHTINTENSITY);
 	}
-	set lightIntensity(value) {
-		this._shaderValues.setNumber(CustomMaterial.LIGHTINTENSITY, value);
+	set lightIntensity(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.LIGHTINTENSITY,value);
 	}
-
-	get lightDir() {
+	
+	get lightDir()
+	{
 		return this._shaderValues.getVector(CustomMaterial.LIGHTDIR);
 	}
-	set lightDir(value) {
-		this._shaderValues.setVector(CustomMaterial.LIGHTDIR, value);
+	set lightDir(value)
+	{
+		this._shaderValues.setVector(CustomMaterial.LIGHTDIR,value);
 	}
-
-	get ordinary1Anisotropy() {
+	
+	get ordinary1Anisotropy()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.ORDINARY1ANISOTROPY);
 	}
-	set ordinary1Anisotropy(value) {
-		this._shaderValues.setNumber(CustomMaterial.ORDINARY1ANISOTROPY, value);
+	set ordinary1Anisotropy(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.ORDINARY1ANISOTROPY,value);
 	}
-
-	get ordinary2Anisotropy() {
+	
+	get ordinary2Anisotropy()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.ORDINARY2ANISOTROPY);
 	}
-	set ordinary2Anisotropy(value) {
-		this._shaderValues.setNumber(CustomMaterial.ORDINARY2ANISOTROPY, value);
+	set ordinary2Anisotropy(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.ORDINARY2ANISOTROPY,value);
 	}
-
-	get skinAnisotropy() {
+	
+	get skinAnisotropy()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.SKINANISOTROPY);
 	}
-	set skinAnisotropy(value) {
-		this._shaderValues.setNumber(CustomMaterial.SKINANISOTROPY, value);
+	set skinAnisotropy(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.SKINANISOTROPY,value);
 	}
-
-	get hairAnisotropy() {
+	
+	get hairAnisotropy()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.HAIRANISOTROPY);
 	}
-	set hairAnisotropy(value) {
-		this._shaderValues.setNumber(CustomMaterial.HAIRANISOTROPY, value);
+	set hairAnisotropy(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.HAIRANISOTROPY,value);
 	}
-
-	get jadeAnisotropy() {
+	
+	get jadeAnisotropy()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.JADEANISOTROPY);
 	}
-	set jadeAnisotropy(value) {
-		this._shaderValues.setNumber(CustomMaterial.JADEANISOTROPY, value);
+	set jadeAnisotropy(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.JADEANISOTROPY,value);
 	}
-
-	get silkStockingAnisotropy() {
+	
+	get silkStockingAnisotropy()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.SILKSTOCKINGANISOTROPY);
 	}
-	set silkStockingAnisotropy(value) {
-		this._shaderValues.setNumber(CustomMaterial.SILKSTOCKINGANISOTROPY, value);
+	set silkStockingAnisotropy(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.SILKSTOCKINGANISOTROPY,value);
 	}
-
-	get transparentAnisotropy() {
+	
+	get transparentAnisotropy()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.TRANSPARENTANISOTROPY);
 	}
-	set transparentAnisotropy(value) {
-		this._shaderValues.setNumber(CustomMaterial.TRANSPARENTANISOTROPY, value);
+	set transparentAnisotropy(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.TRANSPARENTANISOTROPY,value);
 	}
-
-	get transparentThickness() {
+	
+	get transparentThickness()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.TRANSPARENTTHICKNESS);
 	}
-	set transparentThickness(value) {
-		this._shaderValues.setNumber(CustomMaterial.TRANSPARENTTHICKNESS, value);
+	set transparentThickness(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.TRANSPARENTTHICKNESS,value);
 	}
-
-	get breathingLightAnisotropy() {
+	
+	get breathingLightAnisotropy()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.BREATHINGLIGHTANISOTROPY);
 	}
-	set breathingLightAnisotropy(value) {
-		this._shaderValues.setNumber(CustomMaterial.BREATHINGLIGHTANISOTROPY, value);
+	set breathingLightAnisotropy(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.BREATHINGLIGHTANISOTROPY,value);
 	}
-
-	get groundBaseHeight() {
+	
+	get groundBaseHeight()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.GROUNDBASEHEIGHT);
 	}
-	set groundBaseHeight(value) {
-		this._shaderValues.setNumber(CustomMaterial.GROUNDBASEHEIGHT, value);
+	set groundBaseHeight(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.GROUNDBASEHEIGHT,value);
 	}
-
-	get shadowColor() {
+	
+	get shadowColor()
+	{
 		return this._shaderValues.getVector(CustomMaterial.SHADOWCOLOR);
 	}
-	set shadowColor(value) {
-		this._shaderValues.setVector(CustomMaterial.SHADOWCOLOR, value);
+	set shadowColor(value)
+	{
+		this._shaderValues.setVector(CustomMaterial.SHADOWCOLOR,value);
 	}
-
-	get shadowChangeCoefficienct() {
+	
+	get shadowChangeCoefficienct()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.SHADOWCHANGECOEFFICIENT);
 	}
-	set shadowChangeCoefficienct(value) {
-		this._shaderValues.setNumber(CustomMaterial.SHADOWCHANGECOEFFICIENT, value);
+	set shadowChangeCoefficienct(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.SHADOWCHANGECOEFFICIENT,value);
 	}
-
-	get shadowStrength1() {
+	
+	get shadowStrength1()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.SHADOWSTRENGTH1);
 	}
-	set shadowStrength1(value) {
-		this._shaderValues.setNumber(CustomMaterial.SHADOWSTRENGTH1, value);
+	set shadowStrength1(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.SHADOWSTRENGTH1,value);
 	}
-
-	get shadowStrength2() {
+	
+	get shadowStrength2()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.SHADOWSTRENGTH2);
 	}
-	set shadowStrength2(value) {
-		this._shaderValues.setNumber(CustomMaterial.SHADOWSTRENGTH2, value);
+	set shadowStrength2(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.SHADOWSTRENGTH2,value);
 	}
-
-	get shadowStrength3() {
+	
+	get shadowStrength3()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.SHADOWSTRENGTH3);
 	}
-	set shadowStrength3(value) {
-		this._shaderValues.setNumber(CustomMaterial.SHADOWSTRENGTH3, value);
+	set shadowStrength3(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.SHADOWSTRENGTH3,value);
 	}
-
-	get shadowScale1() {
+	
+	get shadowScale1()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.SHADOWSCALE1);
 	}
-	set shadowScale1(value) {
-		this._shaderValues.setNumber(CustomMaterial.SHADOWSCALE1, value);
+	set shadowScale1(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.SHADOWSCALE1,value);
 	}
-
-	get shadowScale2() {
+	
+	get shadowScale2()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.SHADOWSCALE2);
 	}
-	set shadowScale2(value) {
-		this._shaderValues.setNumber(CustomMaterial.SHADOWSCALE2, value);
+	set shadowScale2(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.SHADOWSCALE2,value);
 	}
-
-	get shadowScale3() {
+	
+	get shadowScale3()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.SHADOWSCALE3);
 	}
-	set shadowScale3(value) {
-		this._shaderValues.setNumber(CustomMaterial.SHADOWSCALE3, value);
+	set shadowScale3(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.SHADOWSCALE3,value);
 	}
-
-	get time() {
+	
+	get time()
+	{
 		return this._shaderValues.getNumber(CustomMaterial.TIME);
 	}
-	set time(value) {
-		this._shaderValues.setNumber(CustomMaterial.TIME, value);
+	set time(value)
+	{
+		this._shaderValues.setNumber(CustomMaterial.TIME,value);
 	}
-
-	get isWebGL2() {
+	
+	get isWebGL2()
+	{
 		return null;
 	}
-	set isWebGL2(value) {
-		if (value == true) this._shaderValues.addDefine(CustomMaterial.WEBGL2);
+	set isWebGL2(value)
+	{
+		if(value == true) this._shaderValues.addDefine(CustomMaterial.WEBGL2);
 	}
 }
 
@@ -479,7 +591,7 @@ class Main {
 		Laya.stage.alignH = GameConfig.alignH;
 		Laya.stage.frameRate = "fast";//Laya.Stage.FRAME_SLOW;
 		//Laya.stage.framRate = ;
-		Laya.Stat.show(0, 0);
+		Laya.Stat.show(0,0);
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 
@@ -493,57 +605,51 @@ class Main {
 		//Laya.ResourceVersion.enable("version.json", Laya.Handler.create(this, this.onVersionLoaded), Laya.ResourceVersion.FILENAME_VERSION);
 
 		Laya.loader.load(["../src/PreZ.fs",
-			"../src/PreZ.vs",
-			"../src/RoleCheapPBR_bumped_fresnel_UI.fs",
-			"../src/RoleCheapPBR_bumped_fresnel_UI.vs",
-			"../src/CheapShadow1.fs",
-			"../src/CheapShadow1.vs",
-			"../src/CheapShadow2.fs",
-			"../src/CheapShadow2.vs",
-			"../src/CheapShadow3.fs",
-			"../src/CheapShadow3.vs",
-			"../src/Hitted.fs",
-			"../src/Hitted.vs",
-			//"../res/env1.png",
-			"../res/guanyu_nv_d.png",
-			"../res/guanyu_nv_h.png",
-			"../res/guanyu_nv_n.png",
-			"../res/bichiyouyu_nv_d.png",
-			"../res/bichiyouyu_nv_h.png",
-			"../res/bichiyouyu_nv_n.png",
-			"../res/mojie_d.png",
-			"../res/mojie_h.png",
-			"../res/mojie_n.png",
-			"../res/buzhihuowu_nv_d.png",
-			"../res/buzhihuowu_nv_h.png",
-			"../res/buzhihuowu_nv_n.png"
-		], Laya.Handler.create(this, this.onResLoaded));
+		"../src/PreZ.vs",
+		"../src/RoleCheapPBR_bumped_fresnel_UI.fs",
+		"../src/RoleCheapPBR_bumped_fresnel_UI.vs",
+		"../src/CheapShadow1.fs",
+		"../src/CheapShadow1.vs",
+		"../src/CheapShadow2.fs",
+		"../src/CheapShadow2.vs",
+		"../src/CheapShadow3.fs",
+		"../src/CheapShadow3.vs",
+		"../src/Hitted.fs",
+		"../src/Hitted.vs",
+		//"../res/env1.png",
+		"../res/guanyu_nv_d.png",
+		"../res/guanyu_nv_h.png",
+		"../res/guanyu_nv_n.png",
+		"../res/bichiyouyu_nv_d.png",
+		"../res/bichiyouyu_nv_h.png",
+		"../res/bichiyouyu_nv_n.png",
+		"../res/mojie_d.png",
+		"../res/mojie_h.png",
+		"../res/mojie_n.png",
+		"../res/buzhihuowu_nv_d.png",
+		"../res/buzhihuowu_nv_h.png",
+		"../res/buzhihuowu_nv_n.png"
+		],Laya.Handler.create(this,this.onResLoaded));
 
 		//------------------------------------
 		//添加3D场景
-		this.scene = Laya.stage.addChild(new Laya.Scene3D()) as Laya.Scene3D;
-
+        this.scene = Laya.stage.addChild(new Laya.Scene3D()) as Laya.Scene3D;
+		
 		//添加Sprite3D
 		this.sprite3D = this.scene.addChild(new Laya.Sprite3D()) as Laya.Sprite3D;
 
-		
-		//添加照相机
-		// this.camera = (this.scene.addChild(new Laya.Camera(0, 0.1, 10000))) as Laya.Camera;
-		// this.camera.transform.translate(new Laya.Vector3(0, 10, 12));
-		// this.camera.transform.rotate(new Laya.Vector3(-12, 0, 0), true, false);
-
-		this.camera = (this.scene.addChild(new Laya.Camera(0, 0.1, 10000))) as Laya.Camera;
-		this.camera.transform.translate(new Laya.Vector3(0, 0, 0));
-		this.camera.transform.rotate(new Laya.Vector3(-0, 0, 0), true, false);
-
+        //添加照相机
+        this.camera = (this.scene.addChild(new Laya.Camera(0, 0.1, 100))) as Laya.Camera;
+        this.camera.transform.translate(new Laya.Vector3(0, 10, 12));
+        this.camera.transform.rotate(new Laya.Vector3(-12, 0, 0), true, false);
 		this.camera.orthographic = true;
 		this.camera.clearFlag = Laya.CameraClearFlags.SolidColor;
-		this.camera.clearColor = new Laya.Vector4(0.5, 0.5, 0.5, 1.0); //(0.396078431372549,	0.364705882352941,	0.568627451, 1.0);
+        this.camera.clearColor = new Laya.Vector4(0.5,	0.5,	0.5, 1.0); //(0.396078431372549,	0.364705882352941,	0.568627451, 1.0);
 		this.camera.orthographicVerticalSize = 4;
 		//console.log("2");
 		this.oldTime = Laya.timer.currTimer;
-		this.hittedTime = Laya.timer.currTimer;
-
+		this.hittedTime = 0.0;
+		
 		//console.log("MAINTEX:"+Main.MAINTEX);
 		//console.log("NORMTEX:"+Main.NORMTEX);
 		//console.log("HILIGHTTEX:"+Main.HILIGHTTEX);
@@ -552,15 +658,15 @@ class Main {
 	}
 
 	private onKeyUp(e: Event): void {
-		switch (e["keyCode"]) {
+        switch (e["keyCode"]) {
 			case Laya.Keyboard.A:
-				console.log((Laya.timer.currTimer - this.oldTime) * 0.001);
+				console.log((Laya.timer.currTimer - this.oldTime)*0.001);
 				//(this.mainChar.meshRenderer.material as CustomMaterial).nowTime = Laya.timer.currTimer;
 				this.hittedTime = Laya.timer.currTimer;
-
+				
 				break;
-		}
-	}
+			}
+    }
 
 	onVersionLoaded(): void {
 		//激活大小图映射，加载小图的时候，如果发现小图在大图合集里面，则优先加载大图合集，而不是小图
@@ -575,25 +681,25 @@ class Main {
 	onResLoaded(): void {
 		//初始化shader
 		this.initShader();
-
+		
 		//设置材质
 		var _material_guanyu_nv = new CustomMaterial();
-		_material_guanyu_nv.lightColor = new Laya.Vector4(0.843369730392169, 0.789313742415586, 0.701169502, 1.0);
+		_material_guanyu_nv.lightColor = new Laya.Vector4(0.843369730392169,	0.789313742415586,	0.701169502, 1.0);
 		_material_guanyu_nv.lightIntensity = 1.0;
-		_material_guanyu_nv.lightDir = new Laya.Vector4(0.365998150770667, 0.5, 0.784885567, 0.0);
+		_material_guanyu_nv.lightDir = new Laya.Vector4(0.365998150770667,	0.5,	0.784885567, 0.0);
 		_material_guanyu_nv.mainTex = Laya.loader.getRes("../res/buzhihuowu_nv_d.png");
 		_material_guanyu_nv.hiLightTex = Laya.loader.getRes("../res/buzhihuowu_nv_h.png");
 		_material_guanyu_nv.normTex = Laya.loader.getRes("../res/buzhihuowu_nv_n.png");
 		_material_guanyu_nv.scatteringMask = 0.0;
 		//_material_guanyu_nv.envTex = Laya.loader.getRes("../res/env1.png");
-		_material_guanyu_nv.skinScatteringColor = new Laya.Vector4(0.908546102020596, 0.312226359832408, 0.165807566, 1.0);
-		_material_guanyu_nv.hairScatteringColor = new Laya.Vector4(0.0838045276591244, 0.0334924709805943, 0.022086979, 1.0);
-		_material_guanyu_nv.jadeScatteringColor = new Laya.Vector4(4.0, 0.0, 0.079671354, 1.0);
-		_material_guanyu_nv.silkStockingsColor = new Laya.Vector4(0.115964746188431, 0.0475253377392547, 0.064270804, 1.0);
+		_material_guanyu_nv.skinScatteringColor = new Laya.Vector4(0.908546102020596,	0.312226359832408,	0.165807566,1.0);
+		_material_guanyu_nv.hairScatteringColor = new Laya.Vector4(0.0838045276591244,	0.0334924709805943,	0.022086979,1.0);
+		_material_guanyu_nv.jadeScatteringColor = new Laya.Vector4(4.0,	0.0,	0.079671354,1.0);
+		_material_guanyu_nv.silkStockingsColor = new Laya.Vector4(0.115964746188431,	0.0475253377392547,	0.064270804,1.0);
 		_material_guanyu_nv.silkStockThickness = 0.5;
-		_material_guanyu_nv.breathingLightColor = new Laya.Vector4(0.0627450980392157, 1.0, 1.0, 1.0);
+		_material_guanyu_nv.breathingLightColor = new Laya.Vector4(0.0627450980392157,	1.0,	1.0,1.0);
 		_material_guanyu_nv.breathingLightIntensity = 2.0;
-		_material_guanyu_nv.breathingLightFrequency = 0.15 * 10;
+		_material_guanyu_nv.breathingLightFrequency = 0.15*10;
 		_material_guanyu_nv.breathingLightInterruption = 0.5;
 		_material_guanyu_nv.ordinary1Anisotropy = 0.0;
 		_material_guanyu_nv.ordinary2Anisotropy = 0.0;
@@ -603,14 +709,14 @@ class Main {
 		_material_guanyu_nv.silkStockingAnisotropy = 0.75;
 		_material_guanyu_nv.transparentAnisotropy = 0.0;
 		_material_guanyu_nv.breathingLightAnisotropy = 0.0;
-		_material_guanyu_nv.backLightColor = new Laya.Vector4(0.513725490196078, 0.980392156862745, 1.0, 1.0);
+		_material_guanyu_nv.backLightColor = new Laya.Vector4(0.513725490196078,	0.980392156862745,	1.0,1.0);
 		_material_guanyu_nv.backLightIntensity = 3.0;
-		_material_guanyu_nv.ambientColorSky = new Laya.Vector4(0.219519718074868, 0.219519718074868, 0.219519718, 1.0);
-		_material_guanyu_nv.ambientColorGround = new Laya.Vector4(0.315762743736397, 0.358653905926199, 0.579546612, 1.0);
+		_material_guanyu_nv.ambientColorSky = new Laya.Vector4(0.219519718074868,	0.219519718074868,	0.219519718,1.0);
+		_material_guanyu_nv.ambientColorGround = new Laya.Vector4(0.315762743736397,	0.358653905926199,	0.579546612,1.0);
 		_material_guanyu_nv.ambientColorIntensity = 1.0;
-		_material_guanyu_nv.time = (Laya.timer.currTimer - this.oldTime) * 0.001;
+		_material_guanyu_nv.time = (Laya.timer.currTimer - this.oldTime)*0.001;
 		_material_guanyu_nv.groundBaseHeight = -0.5;
-		_material_guanyu_nv.shadowColor = new Laya.Vector4(0.36862745098, 0.4, 0.560784313725, 1.0);
+		_material_guanyu_nv.shadowColor = new Laya.Vector4(0.36862745098,0.4,0.560784313725,1.0);
 		_material_guanyu_nv.shadowChangeCoefficienct = 0.0;
 		_material_guanyu_nv.shadowStrength1 = 0.5;
 		_material_guanyu_nv.shadowStrength2 = 0.25;
@@ -619,10 +725,10 @@ class Main {
 		_material_guanyu_nv.shadowScale2 = 0.0;
 		_material_guanyu_nv.shadowScale3 = -0.02;
 		_material_guanyu_nv.transparentThickness = 0.5;
-		_material_guanyu_nv.hittedCoverColor = new Laya.Vector4(1.0, 1.0, 1.0, 1.0);
-		_material_guanyu_nv.hittedMulColor = new Laya.Vector4(1.0, 0.8, 0.0, 1.0);
+		_material_guanyu_nv.hittedCoverColor = new Laya.Vector4(1.0,1.0,1.0,1.0);
+		_material_guanyu_nv.hittedMulColor = new Laya.Vector4(1.0,0.8,0.0,1.0);
 		_material_guanyu_nv.hittedCoverOrMul = 0.8;
-		_material_guanyu_nv.hittedCoverTime = 0.15;
+		_material_guanyu_nv.hittedCoverTime = 2.15;
 		_material_guanyu_nv.hittedMulTime = 0.25;
 		_material_guanyu_nv.hittedZ = -12.0;
 		_material_guanyu_nv.hittedZ_k = 13.0;
@@ -632,25 +738,25 @@ class Main {
 		_material_guanyu_nv.hittedRim_add = 0.01;
 		_material_guanyu_nv.hittedIsColor1Grad = 0.0;
 		_material_guanyu_nv.hittedIsColor2Grad = 1.0;
-		_material_guanyu_nv.hittedDeltaTime = (Laya.timer.currTimer - this.hittedTime) * 0.001;
+		_material_guanyu_nv.hittedDeltaTime = (Laya.timer.currTimer-this.hittedTime)*0.001;
 		this.tempMaterial = _material_guanyu_nv;
 
 		var _material_bichiyouyu_nv = new CustomMaterial();
-		_material_bichiyouyu_nv.lightColor = new Laya.Vector4(0.843369730392169, 0.789313742415586, 0.701169502, 1.0);
+		_material_bichiyouyu_nv.lightColor = new Laya.Vector4(0.843369730392169,	0.789313742415586,	0.701169502, 1.0);
 		_material_bichiyouyu_nv.lightIntensity = 1.0;
-		_material_bichiyouyu_nv.lightDir = new Laya.Vector4(0.365998150770667, 0.5, 0.784885567, 0.0);
+		_material_bichiyouyu_nv.lightDir = new Laya.Vector4(0.365998150770667,	0.5,	0.784885567,0.0);
 		_material_bichiyouyu_nv.mainTex = Laya.loader.getRes("../res/bichiyouyu_nv_d.png");
 		_material_bichiyouyu_nv.hiLightTex = Laya.loader.getRes("../res/bichiyouyu_nv_h.png");
 		_material_bichiyouyu_nv.normTex = Laya.loader.getRes("../res/bichiyouyu_nv_n.png");
 		//_material_bichiyouyu_nv.envTex = Laya.loader.getRes("../res/env1.png");
-		_material_bichiyouyu_nv.skinScatteringColor = new Laya.Vector4(0.908546102020596, 0.312226359832408, 0.165807566, 1.0);
-		_material_bichiyouyu_nv.hairScatteringColor = new Laya.Vector4(0.101485107618938, 0.0286201480182921, 0.022086979, 1.0);
-		_material_bichiyouyu_nv.jadeScatteringColor = new Laya.Vector4(1.41496360038652, 0.939581036863521, 0.375503466, 1.0);
-		_material_bichiyouyu_nv.silkStockingsColor = new Laya.Vector4(2.21690835106434, 1.22653906481263, 0.556089815, 1.0);
+		_material_bichiyouyu_nv.skinScatteringColor = new Laya.Vector4(0.908546102020596,	0.312226359832408,	0.165807566,1.0);
+		_material_bichiyouyu_nv.hairScatteringColor = new Laya.Vector4(0.101485107618938,	0.0286201480182921,	0.022086979,1.0);
+		_material_bichiyouyu_nv.jadeScatteringColor = new Laya.Vector4(1.41496360038652,	0.939581036863521,	0.375503466,1.0);
+		_material_bichiyouyu_nv.silkStockingsColor = new Laya.Vector4(2.21690835106434,	1.22653906481263,	0.556089815,1.0);
 		_material_bichiyouyu_nv.silkStockThickness = 0.0;
-		_material_bichiyouyu_nv.breathingLightColor = new Laya.Vector4(0.0627450980392157, 1.0, 1.0, 1.0);
+		_material_bichiyouyu_nv.breathingLightColor = new Laya.Vector4(0.0627450980392157,	1.0,	1.0,1.0);
 		_material_bichiyouyu_nv.breathingLightIntensity = 2.0;
-		_material_bichiyouyu_nv.breathingLightFrequency = 0.15 * 10;
+		_material_bichiyouyu_nv.breathingLightFrequency = 0.15*10;
 		_material_bichiyouyu_nv.breathingLightInterruption = 0.5;
 		_material_bichiyouyu_nv.ordinary1Anisotropy = 0.0;
 		_material_bichiyouyu_nv.ordinary2Anisotropy = 1.0;
@@ -659,14 +765,14 @@ class Main {
 		_material_bichiyouyu_nv.jadeAnisotropy = 0.0;
 		_material_bichiyouyu_nv.silkStockingAnisotropy = 1.0;
 		_material_bichiyouyu_nv.breathingLightAnisotropy = 0.0;
-		_material_bichiyouyu_nv.backLightColor = new Laya.Vector4(0.513725490196078, 0.980392156862745, 1.0, 1.0);
+		_material_bichiyouyu_nv.backLightColor = new Laya.Vector4(0.513725490196078,	0.980392156862745,	1.0,1.0);
 		_material_bichiyouyu_nv.backLightIntensity = 3.0;
-		_material_bichiyouyu_nv.ambientColorSky = new Laya.Vector4(0.219519718074868, 0.219519718074868, 0.219519718, 1.0);
-		_material_bichiyouyu_nv.ambientColorGround = new Laya.Vector4(0.315762743736397, 0.358653905926199, 0.579546612, 1.0);
+		_material_bichiyouyu_nv.ambientColorSky = new Laya.Vector4(0.219519718074868,	0.219519718074868,	0.219519718,1.0);
+		_material_bichiyouyu_nv.ambientColorGround = new Laya.Vector4(0.315762743736397,	0.358653905926199,	0.579546612,1.0);
 		_material_bichiyouyu_nv.ambientColorIntensity = 1.0;
-		_material_bichiyouyu_nv.time = (Laya.timer.currTimer - this.oldTime) * 0.001;
-		_material_bichiyouyu_nv.groundBaseHeight = -0.5;
-		_material_bichiyouyu_nv.shadowColor = new Laya.Vector4(0.36862745098, 0.4, 0.560784313725, 1.0);
+		_material_bichiyouyu_nv.time = (Laya.timer.currTimer - this.oldTime)*0.001;
+		_material_bichiyouyu_nv.groundBaseHeight =  -0.5;
+		_material_bichiyouyu_nv.shadowColor = new Laya.Vector4(0.36862745098,0.4,0.560784313725,1.0);
 		_material_bichiyouyu_nv.shadowChangeCoefficienct = 0.0;
 		_material_bichiyouyu_nv.shadowStrength1 = 0.5;
 		_material_bichiyouyu_nv.shadowStrength2 = 0.25;
@@ -674,22 +780,22 @@ class Main {
 		_material_bichiyouyu_nv.shadowScale1 = 0.02;
 		_material_bichiyouyu_nv.shadowScale2 = 0.0;
 		_material_bichiyouyu_nv.shadowScale3 = -0.02;
-
+		
 		var _material_mojiezuo_compound = new CustomMaterial();
-		_material_mojiezuo_compound.lightColor = new Laya.Vector4(0.843369730392169, 0.789313742415586, 0.701169502, 1.0);
+		_material_mojiezuo_compound.lightColor = new Laya.Vector4(0.843369730392169,	0.789313742415586,	0.701169502, 1.0);
 		_material_mojiezuo_compound.lightIntensity = 1.0;
-		_material_mojiezuo_compound.lightDir = new Laya.Vector4(0.365998150770667, 0.5, 0.784885567, 0.0);
+		_material_mojiezuo_compound.lightDir = new Laya.Vector4(0.365998150770667,	0.5,	0.784885567,0.0);
 		_material_mojiezuo_compound.mainTex = Laya.loader.getRes("../res/mojie_d.png");
 		_material_mojiezuo_compound.hiLightTex = Laya.loader.getRes("../res/mojie_h.png");
 		_material_mojiezuo_compound.normTex = Laya.loader.getRes("../res/mojie_n.png");
-		_material_mojiezuo_compound.skinScatteringColor = new Laya.Vector4(0.908546102020596, 0.312226359832408, 0.165807566, 1.0);
-		_material_mojiezuo_compound.hairScatteringColor = new Laya.Vector4(0.101485107618938, 0.0286201480182921, 0.022086979, 1.0);
-		_material_mojiezuo_compound.jadeScatteringColor = new Laya.Vector4(1.41496360038652, 0.939581036863521, 0.375503466, 1.0);
-		_material_mojiezuo_compound.silkStockingsColor = new Laya.Vector4(2.21690835106434, 1.22653906481263, 0.556089815, 1.0);
+		_material_mojiezuo_compound.skinScatteringColor = new Laya.Vector4(0.908546102020596,	0.312226359832408,	0.165807566,1.0);
+		_material_mojiezuo_compound.hairScatteringColor = new Laya.Vector4(0.101485107618938,	0.0286201480182921,	0.022086979,1.0);
+		_material_mojiezuo_compound.jadeScatteringColor = new Laya.Vector4(1.41496360038652,	0.939581036863521,	0.375503466,1.0);
+		_material_mojiezuo_compound.silkStockingsColor = new Laya.Vector4(2.21690835106434,	1.22653906481263,	0.556089815,1.0);
 		_material_mojiezuo_compound.silkStockThickness = 0.0;
-		_material_mojiezuo_compound.breathingLightColor = new Laya.Vector4(0.0627450980392157, 1.0, 1.0, 1.0);
+		_material_mojiezuo_compound.breathingLightColor = new Laya.Vector4(0.0627450980392157,	1.0,	1.0,1.0);
 		_material_mojiezuo_compound.breathingLightIntensity = 2.0;
-		_material_mojiezuo_compound.breathingLightFrequency = 0.15 * 10;
+		_material_mojiezuo_compound.breathingLightFrequency = 0.15*10;
 		_material_mojiezuo_compound.breathingLightInterruption = 0.5;
 		_material_mojiezuo_compound.ordinary1Anisotropy = 0.0;
 		_material_mojiezuo_compound.ordinary2Anisotropy = 1.0;
@@ -698,14 +804,14 @@ class Main {
 		_material_mojiezuo_compound.jadeAnisotropy = 0.0;
 		_material_mojiezuo_compound.silkStockingAnisotropy = 1.0;
 		_material_mojiezuo_compound.breathingLightAnisotropy = 0.0;
-		_material_mojiezuo_compound.backLightColor = new Laya.Vector4(0.513725490196078, 0.980392156862745, 1.0, 1.0);
+		_material_mojiezuo_compound.backLightColor = new Laya.Vector4(0.513725490196078,	0.980392156862745,	1.0,1.0);
 		_material_mojiezuo_compound.backLightIntensity = 3.0;
-		_material_mojiezuo_compound.ambientColorSky = new Laya.Vector4(0.219519718074868, 0.219519718074868, 0.219519718, 1.0);
-		_material_mojiezuo_compound.ambientColorGround = new Laya.Vector4(0.315762743736397, 0.358653905926199, 0.579546612, 1.0);
+		_material_mojiezuo_compound.ambientColorSky = new Laya.Vector4(0.219519718074868,	0.219519718074868,	0.219519718,1.0);
+		_material_mojiezuo_compound.ambientColorGround = new Laya.Vector4(0.315762743736397,	0.358653905926199,	0.579546612,1.0);
 		_material_mojiezuo_compound.ambientColorIntensity = 1.0;
-		_material_mojiezuo_compound.time = (Laya.timer.currTimer - this.oldTime) * 0.001;
+		_material_mojiezuo_compound.time = (Laya.timer.currTimer - this.oldTime)*0.001;
 		_material_mojiezuo_compound.groundBaseHeight = -0.5;
-		_material_mojiezuo_compound.shadowColor = new Laya.Vector4(0.36862745098, 0.4, 0.560784313725, 1.0);
+		_material_mojiezuo_compound.shadowColor = new Laya.Vector4(0.36862745098,0.4,0.560784313725,1.0);
 		_material_mojiezuo_compound.shadowChangeCoefficienct = 0.0;
 		_material_mojiezuo_compound.shadowStrength1 = 0.5;
 		_material_mojiezuo_compound.shadowStrength2 = 0.25;
@@ -713,35 +819,35 @@ class Main {
 		_material_mojiezuo_compound.shadowScale1 = 0.02;
 		_material_mojiezuo_compound.shadowScale2 = 0.0;
 		_material_mojiezuo_compound.shadowScale3 = -0.02;
-
-		Laya.Texture2D.load("../res/env1.png", Laya.Handler.create(this, function (tex) { _material_mojiezuo_compound.envTex = tex; _material_guanyu_nv.envTex = tex; _material_bichiyouyu_nv.envTex = tex; }));
-
-		if (Laya.WebGL._isWebGL2) {
+		
+		Laya.Texture2D.load("../res/env1.png", Laya.Handler.create(this, function(tex) {_material_mojiezuo_compound.envTex = tex;  _material_guanyu_nv.envTex = tex;  _material_bichiyouyu_nv.envTex = tex;}));
+		
+		if (Laya.WebGL._isWebGL2)
+		{
 			_material_guanyu_nv.isWebGL2 = true;
 			_material_bichiyouyu_nv.isWebGL2 = true;
 			_material_mojiezuo_compound.isWebGL2 = true;
 		}
-		else {
+		else
+		{
 			_material_guanyu_nv.isWebGL2 = false;
 			_material_bichiyouyu_nv.isWebGL2 = false;
 			_material_mojiezuo_compound.isWebGL2 = false;
 		}
-
+		
 		//添加自定义模型
 		//guanyu_nv
-		Laya.Mesh.load("../res/buzhihuowu_nv-77.lm", Laya.Handler.create(this, function (mesh: Laya.Mesh): void {
-			this.mainChar = this.sprite3D.addChild(new Laya.MeshSprite3D(mesh)) as Laya.MeshSprite3D;
-			// this.mainChar.transform.rotate(new Laya.Vector3(-90, 0, 0), true, false);
-			// this.mainChar.transform.translate(new Laya.Vector3(0, 0, -3));
-			this.mainChar.transform.translate(new Laya.Vector3(0, -1, -500));
-			this.mainChar.transform.rotate(new Laya.Vector3(-90, 0, 0), false, false);
-			// this.mainChar.transform.setWorldLossyScale(new Laya.Vector3(2, 2, 2));
-			this.mainChar.meshRenderer.material = _material_guanyu_nv;
-
-			//console.log(this.mainChar.meshFilter.sharedMesh.vertexCount);
-			this.lastIndex = -1;
+		Laya.Mesh.load("../res/buzhihuowu_nv-77.lm", Laya.Handler.create(this,function(mesh:Laya.Mesh):void{
+		this.mainChar = this.sprite3D.addChild(new Laya.MeshSprite3D(mesh)) as Laya.MeshSprite3D;
+		this.mainChar.transform.rotate(new Laya.Vector3(-90,0,0),true,false);
+		this.mainChar.transform.translate(new Laya.Vector3(0,0,-3));
+		this.mainChar.transform.setWorldLossyScale(new Laya.Vector3(2,2,2));
+		this.mainChar.meshRenderer.material = _material_guanyu_nv;
+		
+		//console.log(this.mainChar.meshFilter.sharedMesh.vertexCount);
+		this.lastIndex = -1;
 		}));
-
+		
 		//bichiyouyu_nv
 		/*Laya.Mesh.load("../res/bichiyouyu_nv-bichiyouyu_nv.lm", Laya.Handler.create(this, function(mesh:Laya.Mesh):void {
         this.mainChar = this.sprite3D.addChild(new Laya.MeshSprite3D(mesh)) as Laya.MeshSprite3D;
@@ -749,7 +855,7 @@ class Main {
 		this.mainChar.transform.translate(new Laya.Vector3(0,0,0));
 		this.mainChar.meshRenderer.material = _material_bichiyouyu_nv;
 		}));*/
-
+		
 		//mojiezuo_compound
 		/*Laya.Mesh.load("../res/mojie_compound-mojie_hutui.lm", Laya.Handler.create(this, function(mesh:Laya.Mesh):void {
         this.mainChar = this.sprite3D.addChild(new Laya.MeshSprite3D(mesh)) as Laya.MeshSprite3D;
@@ -799,114 +905,116 @@ class Main {
 		this.mainChar.transform.translate(new Laya.Vector3(0,0,0));
 		this.mainChar.meshRenderer.material = _material_mojiezuo_compound;
 		}));*/
+		
+		
+		
+		this.sprite3D.transform.translate(new Laya.Vector3(0,6.5,0));
 
-
-
-		this.sprite3D.transform.translate(new Laya.Vector3(0, 6.5, 0));
-
-
-
-		Laya.timer.loop(33, this, function () {
-
-			if (this.mainChar) {
+		
+		
+		Laya.timer.loop(33,this,function(){
+            
+			if(this.mainChar)
+			{
 				this.mainChar.transform.rotate(new Laya.Vector3(0, -0.9, 0), false, false);
-
-				var time = (Laya.timer.currTimer - this.oldTime) * 0.001;
+				
+				var time = (Laya.timer.currTimer - this.oldTime)*0.001;
 				_material_guanyu_nv.time = time;
-				this.tempMaterial.hittedDeltaTime = (Laya.timer.currTimer - this.hittedTime) * 0.001;
-				if (time > 62.832) {
+				this.tempMaterial.hittedDeltaTime = (Laya.timer.currTimer-this.hittedTime)*0.001;
+				if(time > 62.832)
+				{
 					this.oldTime = Laya.timer.currTimer;
 				}
-
+				
 
 			}
-		});
+        });	
 	}
 
-
+	
 	private initShader() {
-		var HittedFs: string = Laya.loader.getRes("../src/Hitted.fs") as string;
-		var HittedVs: string = Laya.loader.getRes("../src/Hitted.vs") as string;
-		var PreZFs: string = Laya.loader.getRes("../src/PreZ.fs") as string;
-		var PreZVs: string = Laya.loader.getRes("../src/PreZ.vs") as string;
-		var PBRShaderFs: string = Laya.loader.getRes("../src/RoleCheapPBR_bumped_fresnel_UI.fs") as string;
-		var PBRShaderVs: string = Laya.loader.getRes("../src/RoleCheapPBR_bumped_fresnel_UI.vs") as string;
-		var ShadowShader1Fs: string = Laya.loader.getRes("../src/CheapShadow1.fs") as string;
-		var ShadowShader1Vs: string = Laya.loader.getRes("../src/CheapShadow1.vs") as string;
-		var ShadowShader2Fs: string = Laya.loader.getRes("../src/CheapShadow2.fs") as string;
-		var ShadowShader2Vs: string = Laya.loader.getRes("../src/CheapShadow2.vs") as string;
-		var ShadowShader3Fs: string = Laya.loader.getRes("../src/CheapShadow3.fs") as string;
-		var ShadowShader3Vs: string = Laya.loader.getRes("../src/CheapShadow3.vs") as string;
+		var HittedFs:string = Laya.loader.getRes("../src/Hitted.fs") as string;
+		var HittedVs:string = Laya.loader.getRes("../src/Hitted.vs") as string;
+		var PreZFs:string = Laya.loader.getRes("../src/PreZ.fs") as string;
+		var PreZVs:string = Laya.loader.getRes("../src/PreZ.vs") as string;
+		var PBRShaderFs:string = Laya.loader.getRes("../src/RoleCheapPBR_bumped_fresnel_UI.fs") as string;
+		var PBRShaderVs:string = Laya.loader.getRes("../src/RoleCheapPBR_bumped_fresnel_UI.vs") as string;
+		var ShadowShader1Fs:string = Laya.loader.getRes("../src/CheapShadow1.fs") as string;
+		var ShadowShader1Vs:string = Laya.loader.getRes("../src/CheapShadow1.vs") as string;
+		var ShadowShader2Fs:string = Laya.loader.getRes("../src/CheapShadow2.fs") as string;
+		var ShadowShader2Vs:string = Laya.loader.getRes("../src/CheapShadow2.vs") as string;
+		var ShadowShader3Fs:string = Laya.loader.getRes("../src/CheapShadow3.fs") as string;
+		var ShadowShader3Vs:string = Laya.loader.getRes("../src/CheapShadow3.vs") as string;
 		//console.log("hahahah");
 		//console.log(PBRShaderVs);
 		//所有的attributeMap属性
 		var attributeMap = {
-			'a_Position': Laya.VertexMesh.MESH_POSITION0,
+			'a_Position': Laya.VertexMesh.MESH_POSITION0, 
 			'a_Texcoord': Laya.VertexMesh.MESH_TEXTURECOORDINATE0,
 			'a_Normal': Laya.VertexMesh.MESH_NORMAL0,
 			'a_Tangent': Laya.VertexMesh.MESH_TANGENT0
 		};
 		//所有的uniform属性
 		var uniformMap = {
-			'u_MvpMatrix': Laya.Shader3D.PERIOD_SPRITE,
+			'u_MvpMatrix': Laya.Shader3D.PERIOD_SPRITE, 
 			'u_WorldMat': Laya.Shader3D.PERIOD_SPRITE,
 			'u_ViewProjection': Laya.Shader3D.PERIOD_CAMERA,
 			'u_MainTex': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_NormalMap': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_ScatteringMask': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_HLTex': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_EnvTex': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_SkinScatteringColor': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_HairScatteringColor': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_JadeScatteringColor': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_SilkStockingsColor': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_SilkStockThickness': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_LightColor': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_LightDir': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_LightIntensity': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_BackLightColor': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_BackLightIntensity': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_AmbientColorSky': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_AmbientColorGround': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_AmbientColorIntensity': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_BreathingLightColor': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_BreathingLightIntensity': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_BreathingLightFrequency': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_BreathingLightInterruption': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_Ordinary1Anisotropy': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_Ordinary2Anisotropy': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_SkinAnisotropy': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_HairAnisotropy': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_JadeAnisotropy': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_SilkStockingAnisotropy': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_TransparentAnisotropy': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_BreathingLightAnisotropy': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_TransparentThickness': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_ShadowColor': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_ShadowScale1': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_ShadowScale2': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_ShadowScale3': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_ShadowStrength1': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_ShadowStrength2': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_ShadowStrength3': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_GroundBaseHeight': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_ShadowChangeCoefficienct': Laya.Shader3D.PERIOD_MATERIAL,
-			'u_CameraPos': Laya.Shader3D.PERIOD_CAMERA,
-			'u_MyTime': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedCoverColor': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedMulColor': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedCoverOrMul': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedCoverTime': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedMulTime': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedZ': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedZ_k': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedUseNormal': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedRim_k': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedRim_pow': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedRim_add': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedIsColor1Grad': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedIsColor2Grad': Laya.Shader3D.PERIOD_MATERIAL,
-			'_hittedDeltaTime': Laya.Shader3D.PERIOD_MATERIAL
+            'u_NormalMap':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_ScatteringMask':Laya.Shader3D.PERIOD_MATERIAL,
+            'u_HLTex':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_EnvTex':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_SkinScatteringColor':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_HairScatteringColor':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_JadeScatteringColor':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_SilkStockingsColor':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_SilkStockThickness':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_LightColor':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_LightDir':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_LightIntensity':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_BackLightColor':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_BackLightIntensity':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_AmbientColorSky':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_AmbientColorGround':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_AmbientColorIntensity':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_BreathingLightColor':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_BreathingLightIntensity':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_BreathingLightFrequency':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_BreathingLightInterruption':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_Ordinary1Anisotropy':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_Ordinary2Anisotropy':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_SkinAnisotropy':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_HairAnisotropy':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_JadeAnisotropy':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_SilkStockingAnisotropy':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_TransparentAnisotropy':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_BreathingLightAnisotropy':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_TransparentThickness':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_ShadowColor':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_ShadowScale1':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_ShadowScale2':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_ShadowScale3':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_ShadowStrength1':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_ShadowStrength2':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_ShadowStrength3':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_GroundBaseHeight':Laya.Shader3D.PERIOD_MATERIAL,
+			'u_ShadowChangeCoefficienct':Laya.Shader3D.PERIOD_MATERIAL,
+            'u_CameraPos':Laya.Shader3D.PERIOD_CAMERA,
+			'u_MyTime':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedCoverColor':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedMulColor':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedCoverOrMul':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedCoverTime':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedMulTime':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedZ':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedZ_k':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedUseNormal':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedRim_k':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedRim_pow':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedRim_add':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedIsColor1Grad':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedIsColor2Grad':Laya.Shader3D.PERIOD_MATERIAL,
+			'_hittedDeltaTime':Laya.Shader3D.PERIOD_MATERIAL
 
 
 		};
@@ -921,56 +1029,56 @@ class Main {
 		var HittedPass = subShader.addShaderPass(HittedVs, HittedFs);
 		//往新创建的subShader中添加shaderPass
 		//var PreZPass = subShader.addShaderPass(PreZVs, PreZFs);
-		//PreZPass.renderState.depthTest = Laya.RenderState.DEPTHTEST_LEQUAL;
-		//PreZPass.renderState.blend = Laya.RenderState.BLEND_ENABLE_ALL;
-		//PreZPass.renderState.blendEquation = Laya.RenderState.BLENDEQUATION_ADD;
-		//PreZPass.renderState.srcBlend = Laya.RenderState.BLENDPARAM_ZERO;
-		//PreZPass.renderState.dstBlend = Laya.RenderState.BLENDPARAM_ONE;
-		//PreZPass.renderState.stencilFunc = Laya.RenderState.STENCIL_ALWAYS;
-		//PreZPass.renderState.stencilMask = 7;
-		//PreZPass.renderState.stencilRef = 2;
-		//PreZPass.renderState.stencilOpPass = Laya.RenderState.STENCIL_REPLACE;
-		//PreZPass.renderState.depthWrite = true;
+        //PreZPass.renderState.depthTest = Laya.RenderState.DEPTHTEST_LEQUAL;
+        //PreZPass.renderState.blend = Laya.RenderState.BLEND_ENABLE_ALL;
+        //PreZPass.renderState.blendEquation = Laya.RenderState.BLENDEQUATION_ADD;
+        //PreZPass.renderState.srcBlend = Laya.RenderState.BLENDPARAM_ZERO;
+        //PreZPass.renderState.dstBlend = Laya.RenderState.BLENDPARAM_ONE;
+        //PreZPass.renderState.stencilFunc = Laya.RenderState.STENCIL_ALWAYS;
+        //PreZPass.renderState.stencilMask = 7;
+        //PreZPass.renderState.stencilRef = 2;
+        //PreZPass.renderState.stencilOpPass = Laya.RenderState.STENCIL_REPLACE;
+        //PreZPass.renderState.depthWrite = true;
 
-		//var PBRPass = subShader.addShaderPass(PBRShaderVs, PBRShaderFs);
-		//PBRPass.renderState.cull = Laya.RenderState.CULL_BACK;
-		//PBRPass.renderState.blend = Laya.RenderState.BLEND_ENABLE_ALL;
-		//PBRPass.renderState.blendEquation = Laya.RenderState.BLENDEQUATION_ADD;
-		//PBRPass.renderState.srcBlend = Laya.RenderState.BLENDPARAM_SRC_ALPHA;
-		//PBRPass.renderState.dstBlend = Laya.RenderState.BLENDPARAM_ONE_MINUS_SRC_ALPHA;
-		//PBRPass.renderState.depthWrite = false;
+        //var PBRPass = subShader.addShaderPass(PBRShaderVs, PBRShaderFs);
+        //PBRPass.renderState.cull = Laya.RenderState.CULL_BACK;
+        //PBRPass.renderState.blend = Laya.RenderState.BLEND_ENABLE_ALL;
+        //PBRPass.renderState.blendEquation = Laya.RenderState.BLENDEQUATION_ADD;
+        //PBRPass.renderState.srcBlend = Laya.RenderState.BLENDPARAM_SRC_ALPHA;
+        //PBRPass.renderState.dstBlend = Laya.RenderState.BLENDPARAM_ONE_MINUS_SRC_ALPHA;
+        //PBRPass.renderState.depthWrite = false;
 
-		//var shadowPass1 = subShader.addShaderPass(ShadowShader1Vs, ShadowShader1Fs);
-		//shadowPass1.renderState.blend = Laya.RenderState.BLEND_ENABLE_ALL;
-		//shadowPass1.renderState.blendEquation = Laya.RenderState.BLENDEQUATION_ADD;
-		//shadowPass1.renderState.srcBlend = Laya.RenderState.BLENDPARAM_SRC_ALPHA;
-		//shadowPass1.renderState.dstBlend = Laya.RenderState.BLENDPARAM_ONE_MINUS_SRC_ALPHA;
-		//shadowPass1.renderState.stencilFunc = Laya.RenderState.STENCIL_GREATER;
-		//shadowPass1.renderState.stencilMask = 224;
-		//shadowPass1.renderState.stencilRef = 192;
-		//shadowPass1.renderState.stencilOpPass = Laya.RenderState.STENCIL_REPLACE;
+        //var shadowPass1 = subShader.addShaderPass(ShadowShader1Vs, ShadowShader1Fs);
+        //shadowPass1.renderState.blend = Laya.RenderState.BLEND_ENABLE_ALL;
+        //shadowPass1.renderState.blendEquation = Laya.RenderState.BLENDEQUATION_ADD;
+        //shadowPass1.renderState.srcBlend = Laya.RenderState.BLENDPARAM_SRC_ALPHA;
+        //shadowPass1.renderState.dstBlend = Laya.RenderState.BLENDPARAM_ONE_MINUS_SRC_ALPHA;
+        //shadowPass1.renderState.stencilFunc = Laya.RenderState.STENCIL_GREATER;
+        //shadowPass1.renderState.stencilMask = 224;
+        //shadowPass1.renderState.stencilRef = 192;
+        //shadowPass1.renderState.stencilOpPass = Laya.RenderState.STENCIL_REPLACE;
 
-		//var shadowPass2 = subShader.addShaderPass(ShadowShader2Vs, ShadowShader2Fs);
-		//shadowPass2.renderState.blend = Laya.RenderState.BLEND_ENABLE_ALL;
-		//shadowPass2.renderState.blendEquation = Laya.RenderState.BLENDEQUATION_ADD;
-		//shadowPass2.renderState.srcBlend = Laya.RenderState.BLENDPARAM_SRC_ALPHA;
-		//shadowPass2.renderState.dstBlend = Laya.RenderState.BLENDPARAM_ONE_MINUS_SRC_ALPHA;
-		//shadowPass2.renderState.stencilFunc = Laya.RenderState.STENCIL_GREATER;
-		//shadowPass2.renderState.stencilMask = 224;
-		//shadowPass2.renderState.stencilRef = 160;
-		//shadowPass2.renderState.stencilOpPass = Laya.RenderState.STENCIL_REPLACE;
+        //var shadowPass2 = subShader.addShaderPass(ShadowShader2Vs, ShadowShader2Fs);
+        //shadowPass2.renderState.blend = Laya.RenderState.BLEND_ENABLE_ALL;
+        //shadowPass2.renderState.blendEquation = Laya.RenderState.BLENDEQUATION_ADD;
+        //shadowPass2.renderState.srcBlend = Laya.RenderState.BLENDPARAM_SRC_ALPHA;
+        //shadowPass2.renderState.dstBlend = Laya.RenderState.BLENDPARAM_ONE_MINUS_SRC_ALPHA;
+        //shadowPass2.renderState.stencilFunc = Laya.RenderState.STENCIL_GREATER;
+        //shadowPass2.renderState.stencilMask = 224;
+        //shadowPass2.renderState.stencilRef = 160;
+        //shadowPass2.renderState.stencilOpPass = Laya.RenderState.STENCIL_REPLACE;
 
-		//var shadowPass3 = subShader.addShaderPass(ShadowShader3Vs, ShadowShader3Fs);
-		//shadowPass3.renderState.blend = Laya.RenderState.BLEND_ENABLE_ALL;
-		//shadowPass3.renderState.blendEquation = Laya.RenderState.BLENDEQUATION_ADD;
-		//shadowPass3.renderState.srcBlend = Laya.RenderState.BLENDPARAM_SRC_ALPHA;
-		//shadowPass3.renderState.dstBlend = Laya.RenderState.BLENDPARAM_ONE_MINUS_SRC_ALPHA;
-		//shadowPass3.renderState.stencilFunc = Laya.RenderState.STENCIL_GREATER;
-		//shadowPass3.renderState.stencilMask = 224;
-		//shadowPass3.renderState.stencilRef = 128;
-		//shadowPass3.renderState.stencilOpPass = Laya.RenderState.STENCIL_REPLACE;
+        //var shadowPass3 = subShader.addShaderPass(ShadowShader3Vs, ShadowShader3Fs);
+        //shadowPass3.renderState.blend = Laya.RenderState.BLEND_ENABLE_ALL;
+        //shadowPass3.renderState.blendEquation = Laya.RenderState.BLENDEQUATION_ADD;
+        //shadowPass3.renderState.srcBlend = Laya.RenderState.BLENDPARAM_SRC_ALPHA;
+        //shadowPass3.renderState.dstBlend = Laya.RenderState.BLENDPARAM_ONE_MINUS_SRC_ALPHA;
+        //shadowPass3.renderState.stencilFunc = Laya.RenderState.STENCIL_GREATER;
+        //shadowPass3.renderState.stencilMask = 224;
+        //shadowPass3.renderState.stencilRef = 128;
+        //shadowPass3.renderState.stencilOpPass = Laya.RenderState.STENCIL_REPLACE;
 	}
-
+	
 	private scene: Laya.Scene3D;
 	private sprite3D: Laya.Sprite3D;
 	private mainChar: Laya.MeshSprite3D;
@@ -979,8 +1087,8 @@ class Main {
 	private v: Array<Array<number>>;
 	private camera: Laya.Camera;
 	private lastIndex: number;
-	private indices: Uint16Array;
-	private tempMaterial: CustomMaterial;
+	private indices:Uint16Array;
+	private tempMaterial:CustomMaterial;
 	private hittedTime: number;
 }
 //激活启动类

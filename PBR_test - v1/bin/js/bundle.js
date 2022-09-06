@@ -29,16 +29,16 @@ var laya = (function (exports) {
         constructor() {
             super();
             var scene = Laya.stage.addChild(new Laya.Scene3D());
-            // var camera = (scene.addChild(new Laya.Camera(0, 0.1, 10000)));
-            // camera.transform.translate(new Laya.Vector3(0, 0, 0));
-            // camera.transform.rotate(new Laya.Vector3(-30, 0, 0), true, false);
-            // var directionLight = scene.addChild(new Laya.DirectionLight());
-            // directionLight.color = new Laya.Vector3(0.6, 0.6, 0.6);
-            // directionLight.transform.worldMatrix.setForward(new Laya.Vector3(1, -1, 0));
-            // var box = scene.addChild(new Laya.MeshSprite3D(Laya.PrimitiveMesh.createBox(1, 1, 1)));
-            // box.transform.rotate(new Laya.Vector3(0, 45, 0), false, false);
-            // var _material = new CustomMaterial();
-            // box.meshRenderer.material = _material;
+            var camera = (scene.addChild(new Laya.Camera(0, 0.1, 100)));
+            camera.transform.translate(new Laya.Vector3(0, 3, 3));
+            camera.transform.rotate(new Laya.Vector3(-30, 0, 0), true, false);
+            var directionLight = scene.addChild(new Laya.DirectionLight());
+            directionLight.color = new Laya.Vector3(0.6, 0.6, 0.6);
+            directionLight.transform.worldMatrix.setForward(new Laya.Vector3(1, -1, 0));
+            var box = scene.addChild(new Laya.MeshSprite3D(Laya.PrimitiveMesh.createBox(1, 1, 1)));
+            box.transform.rotate(new Laya.Vector3(0, 45, 0), false, false);
+            var _material = new CustomMaterial();
+            box.meshRenderer.material = _material;
         }
     }
 
@@ -519,9 +519,9 @@ var laya = (function (exports) {
             ], Laya.Handler.create(this, this.onResLoaded));
             this.scene = Laya.stage.addChild(new Laya.Scene3D());
             this.sprite3D = this.scene.addChild(new Laya.Sprite3D());
-            this.camera = (this.scene.addChild(new Laya.Camera(0, 0.1, 10000)));
-            this.camera.transform.translate(new Laya.Vector3(0, 0, 0));
-            this.camera.transform.rotate(new Laya.Vector3(-0, 0, 0), true, false);
+            this.camera = (this.scene.addChild(new Laya.Camera(0, 0.1, 100)));
+            this.camera.transform.translate(new Laya.Vector3(0, 10, 12));
+            this.camera.transform.rotate(new Laya.Vector3(-12, 0, 0), true, false);
             this.camera.orthographic = true;
             this.camera.clearFlag = Laya.CameraClearFlags.SolidColor;
             this.camera.clearColor = new Laya.Vector4(0.5, 0.5, 0.5, 1.0);
@@ -588,10 +588,10 @@ var laya = (function (exports) {
             _material_guanyu_nv.hittedCoverColor = new Laya.Vector4(1.0, 1.0, 1.0, 1.0);
             _material_guanyu_nv.hittedMulColor = new Laya.Vector4(1.0, 0.8, 0.0, 1.0);
             _material_guanyu_nv.hittedCoverOrMul = 0.8;
-            _material_guanyu_nv.hittedCoverTime = 0.15;
+            _material_guanyu_nv.hittedCoverTime = 2.15;
             _material_guanyu_nv.hittedMulTime = 0.25;
-            _material_guanyu_nv.hittedZ = -0.0;
-            _material_guanyu_nv.hittedZ_k = 1.0;
+            _material_guanyu_nv.hittedZ = -12.0;
+            _material_guanyu_nv.hittedZ_k = 13.0;
             _material_guanyu_nv.hittedUseNormal = 0.0;
             _material_guanyu_nv.hittedRim_k = 1.0;
             _material_guanyu_nv.hittedRim_pow = 1.0;
@@ -689,14 +689,13 @@ var laya = (function (exports) {
             }
             Laya.Mesh.load("../res/buzhihuowu_nv-77.lm", Laya.Handler.create(this, function (mesh) {
                 this.mainChar = this.sprite3D.addChild(new Laya.MeshSprite3D(mesh));
-              
-                this.mainChar.transform.translate(new Laya.Vector3(0, -1, -500));
-                this.mainChar.transform.rotate(new Laya.Vector3(-90, 0, 0), false, false);
-                // this.mainChar.transform.setWorldLossyScale(new Laya.Vector3(2, 2, 2));
+                this.mainChar.transform.rotate(new Laya.Vector3(-90, 0, 0), true, false);
+                this.mainChar.transform.translate(new Laya.Vector3(0, 0, -3));
+                this.mainChar.transform.setWorldLossyScale(new Laya.Vector3(2, 2, 2));
                 this.mainChar.meshRenderer.material = _material_guanyu_nv;
                 this.lastIndex = -1;
             }));
-            // this.sprite3D.transform.translate(new Laya.Vector3(0, 6.5, 0));
+            this.sprite3D.transform.translate(new Laya.Vector3(0, 6.5, 0));
             Laya.timer.loop(33, this, function () {
                 if (this.mainChar) {
                     this.mainChar.transform.rotate(new Laya.Vector3(0, -0.9, 0), false, false);
