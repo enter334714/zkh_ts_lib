@@ -1,0 +1,3 @@
+class Girl extends People{
+    
+}

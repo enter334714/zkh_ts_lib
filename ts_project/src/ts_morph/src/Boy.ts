@@ -1,0 +1,3 @@
+class Boy extends People{
+    
+}
